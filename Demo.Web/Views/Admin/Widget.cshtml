@@ -1,0 +1,28 @@
+﻿@model Demo.Model.Admin.Widget.WidgetIndexModel
+@section ExtendScripts
+    {
+    <script src="@Url.Content("/js/page/widget.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            comdy.widget.init({
+                pageSize: "#Paging_PageSize",
+                pageNumber: "#Paging_PageNumber",
+                searchForm: "#formSearch",
+                searchFormInput: "#formSearch input",
+                resultContent: "#results",
+                searchUrl: "@Url.Action("widget", "admin")",
+                deleteUrl: "@Url.Action("deletewidget", "admin")"
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>@ViewBag.Title</h5>
+        <hr />
+        @await Html.PartialAsync("Widget/_Filter")
+    </div>
+    <div id="results">
+        @await Html.PartialAsync("Widget/_Result")
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿body {
+    height: 100% !important;
+}
+.tablet-landscape {
+    background-image: url(../images/demo/tablet-landscape.png);
+    background-repeat: no-repeat;
+    height: 871px;
+    margin: 30px auto;
+    padding-left: 94px;
+    padding-top: 43px;
+    width: 1240px
+}
+
+.tablet-portrait {
+    background-image: url(../images/demo/tablet-portrait.png);
+    background-repeat: no-repeat;
+    height: 1241px;
+    margin: 30px auto;
+    padding-left: 37px;
+    padding-top: 104px;
+    width: 900px
+}
+
+.phone-landscape {
+    background-image: url(../images/demo/phone-landscape.png);
+    background-repeat: no-repeat;
+    height: 395px;
+    margin: 100px auto 30px;
+    padding-left: 97px;
+    padding-top: 17px;
+    width: 781px
+}
+
+.phone-portrait {
+    background-image: url(../images/demo/phone-portrait.png);
+    background-repeat: no-repeat;
+    height: 762px;
+    margin: 30px auto;
+    padding-left: 12px;
+    padding-top: 96px;
+    width: 395px
+}
+
+.pc {
+    height: 100%
+}
+
+/*.srcoll {
+    overflow-x: hidden;
+    overflow-y: scroll
+}*/
+
+
+.flipped {
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	display: inline-block;
+}

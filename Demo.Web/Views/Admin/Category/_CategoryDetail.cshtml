@@ -1,0 +1,53 @@
+﻿@model Demo.Model.Admin.Category.CategoryEditModel
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formCategory" }))
+        {
+            @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+            @Html.HiddenFor(m => m.IsEdit)
+            @Html.HiddenFor(m => m.Entity.Id)
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Name)*</label>
+                        <div class="col-xs-8">
+                            @Html.TextBoxFor(m => m.Entity.Name, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Slug)*</label>
+                        <div class="col-xs-8">
+                            @Html.TextBoxFor(m => m.Entity.Slug, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Keyword)</label>
+                        <div class="col-xs-8">
+                            @Html.TextAreaFor(m => m.Entity.Keyword, 3, 1, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Description)</label>
+                        <div class="col-xs-8">
+                            @Html.TextAreaFor(m => m.Entity.Description, 4, 1, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.IsActive)</label>
+                        <div class="col-xs-8">
+                            @Html.CheckBoxFor(m => m.Entity.IsActive, new { view = true, @class = "styled" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

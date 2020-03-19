@@ -1,0 +1,42 @@
+﻿@model int
+@{
+    Layout = "_ErrorLayout";
+
+    string message;
+    switch (Model)
+    {
+        case 400:
+            message = "Không thể hoàn thành yêu cầu truy cập do cú pháp không đúng.";
+            break;
+        case 403:
+            message = "Bạn không có quyền truy cập.";
+            break;
+        case 404:
+            message = "Không tìm thấy trang.";
+            break;
+        case 408:
+            message = "Máy chủ đã hết thời gian chờ yêu cầu truy cập.";
+            break;
+        case 500:
+            message = "Máy chủ không thể hoàn tất xử lý yêu cầu truy cập của bạn.";
+            break;
+        default:
+            message = "Thật kỳ lạ ... Sự cố mà chúng tôi không lường trước đã xảy ra.";
+            break;
+    }
+}
+<div class="text-center content-group">
+    <h1 class="error-title">@Model</h1>
+    <h5>@message</h5>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
+        <form action="#" class="main-search">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <a href="/" class="btn btn-primary content-group"><i class="icon-home2 position-left"></i> Trở Về Trang Chủ</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

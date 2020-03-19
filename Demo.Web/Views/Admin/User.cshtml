@@ -1,0 +1,33 @@
+﻿@model Demo.Model.Admin.User.UserIndexModel
+@section ExtendScripts
+    {
+    @Url.RenderScripts("/js/page", "user.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.user.init({
+                saveForm: '#formUser',
+                saveFormInput: '#formUser input',
+                pageSize: '#Paging_PageSize',
+                pageNumber: '#Paging_PageNumber',
+                searchForm: '#formSearchUser',
+                searchFormInput: '#formSearchUser input',
+                resultContent: '#results',
+                searchUrl: '@Url.Action("user", "admin")',
+                createUrl: '@Url.Action("createuser", "admin")',
+                editUrl: '@Url.Action("edituser", "admin")',
+                saveUrl: '@Url.Action("saveuser", "admin")',
+                deleteUrl: '@Url.Action("deleteuser", "admin")'
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>Quản Lý Người Dùng</h5>
+        <hr />
+        @await Html.PartialAsync("User/_UserFilter")
+    </div>
+    <div id="results">
+        @await Html.PartialAsync("User/_UserResult")
+    </div>
+</div>

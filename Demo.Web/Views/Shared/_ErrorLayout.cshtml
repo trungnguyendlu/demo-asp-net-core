@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.FullTitle</title>
+    <meta name="google-site-verification" content="KCHwI-mPT4Q_VyQGqYiyGyGum2rEcfOIEXfbizJhV6s" />
+    <meta name="Language" content="vi">
+    <meta name="apple-mobile-web-app-title" content="@Common.Settings.SiteName">
+    <meta name="application-name" content="@Common.Settings.SiteName">
+    @if (!string.IsNullOrEmpty(Common.Settings.IconUrl))
+    {
+        <link rel="icon" type="image/png" href="@Common.Settings.IconUrl">
+    }
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css" />
+    <link href="/icons/icomoon/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/css/error.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="login-container">
+    <div class="page-container">
+        <div class="page-content">
+            <div class="content-wrapper">
+                <div class="content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("/js/core/libraries/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/bootstrap.min.js")" type="text/javascript"></script>
+</body>
+</html>

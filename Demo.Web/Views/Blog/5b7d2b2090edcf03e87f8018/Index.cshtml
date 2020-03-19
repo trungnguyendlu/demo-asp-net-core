@@ -1,0 +1,50 @@
+﻿@model PostIndexModel
+@{
+    var keywords = string.Join(",", Model.RightBar.Categories.Select(a => a.Keyword));
+    var description = $"Các bài viết về {string.Join(",", Model.RightBar.Categories.Select(a => a.Name))}.";
+}
+@section HeaderIncludes {
+    <meta name="description" content="@description">
+    <meta name="keywords" content="@keywords">
+    <meta property="og:description" content="@description">
+}
+@section RichSnippets {
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "@Common.Settings.SiteName",
+        "item": "@ViewBag.Host"
+        },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "@ViewBag.Title",
+        "item": "@ViewBag.FullUrl"
+        }]
+        }
+    </script>
+}
+<section class="page-title">
+    <div class="auto-container">
+        <h1>Tin Tức</h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Trang Chủ</a></li>
+            <li>Tin Tức</li>
+        </ul>
+    </div>
+</section>
+<div class="news-section blog-detail pagetoppadd">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                @await Html.PartialAsync($"{Common.WebSetting.ThemeId}/_Posts")
+            </div>
+            <div class="sidebar col-lg-4 col-md-12">
+                @await Html.PartialAsync($"{Common.WebSetting.ThemeId}/_RightBar", Model.RightBar)
+            </div>
+        </div>
+    </div>
+</div>

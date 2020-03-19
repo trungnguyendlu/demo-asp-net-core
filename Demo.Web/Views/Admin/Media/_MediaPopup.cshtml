@@ -1,0 +1,54 @@
+﻿@model Demo.Model.Admin.Media.MediaIndexModel
+<div class="row" id="section-media">
+    <div class="col-lg-12">
+        <div id="section-upload" class="hidden">
+            @using (Html.BeginForm("UploadMedia", "Admin", FormMethod.Post, new { @class = "dropzone", id = "dropzone" }))
+            {
+                @Html.Hidden("Entity.Type", Model.Type)
+            }
+        </div>
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formSearchMedia" }))
+        {
+            @Html.Hidden("MediaSelectedUrl")
+            @Html.HiddenFor(m => m.Sort)
+            @Html.HiddenFor(m => m.Paging.PageSize)
+            @Html.HiddenFor(m => m.Paging.PageNumber)
+            <div class="row mt-10">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <strong>Chọn Hình Ảnh Trong Thư Viện</strong> hoặc<button onclick="comdy.admin.showUploadSection()" type="button" class="ml-10 btn btn-xs btn-default"><i class="fa fa-upload"></i>&nbsp;Tải Lên</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.EnumDropDownFor(m => m.Type, null, "--Phân Loại--", new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-xs", placeholder = "Tên hình ảnh" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button onclick="comdy.admin.searchMedia(1)" type="button" class="btn btn-xs btn-block btn-info"><i class="fa fa-search"></i>&nbsp;Tìm Kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="media-result">
+            @await Html.PartialAsync("Media/_MediaItems")
+        </div>
+        <div id="load-more-media" class="col-xs-12 text-center @(Model.Paging.TotalPages == Model.Paging.PageNumber ? "hidden" : "")">
+            <button type="button" class="btn btn-xs btn-primary pl-20 pr-20">&nbsp;Xem thêm...</button>
+        </div>
+    </div>
+</div>

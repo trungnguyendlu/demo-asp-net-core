@@ -1,0 +1,294 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/page/category.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/category.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/media.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/media.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/message.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/message.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/notification.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/notification.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/user.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/user.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/ticket.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/ticket.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/slider.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/slider.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/settings.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/settings.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/servicedetail.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/servicedetail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/service.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/service.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/role.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/role.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/projectdetail.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/projectdetail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/project.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/project.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/productdetail.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/productdetail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/product.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/product.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/postdetail.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/postdetail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/post.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/post.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/partner.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/partner.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/style.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/colors.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/colors.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/construction.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/construction.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/js/functions.min.js",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/js/functions.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/js/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/js/jquery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/js/plugins.min.js",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/js/plugins.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/bootstrap.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/dark.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/dark.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/custom.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/custom.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/swiper.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/swiper.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/font-icons.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/font-icons.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/magnific-popup.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/magnific-popup.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/animate.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/animate.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/responsive.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8006/css/responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/common.min.css",
+    "inputFiles": [
+      "wwwroot/css/common.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/editor/tinymce/langs/vi_VN.min.js",
+    "inputFiles": [
+      "wwwroot/lib/editor/tinymce/langs/vi_VN.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8017/js/custom.min.js",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8017/js/custom.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8017/css/style.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8017/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8017/css/custom.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8017/css/custom.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/gallerydetail.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/gallerydetail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/gallery.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/gallery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/fe.Demo.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/fe.Demo.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/landingpage.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/landingpage.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/subscribe.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/subscribe.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/page/widgetdetail.min.js",
+    "inputFiles": [
+      "wwwroot/js/page/widgetdetail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8018/js/custom.min.js",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8018/js/custom.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/core.min.css",
+    "inputFiles": [
+      "wwwroot/css/core.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/themes/5b7d2b2090edcf03e87f8018/css/custom.min.css",
+    "inputFiles": [
+      "wwwroot/themes/5b7d2b2090edcf03e87f8018/css/custom.css"
+    ]
+  }
+]

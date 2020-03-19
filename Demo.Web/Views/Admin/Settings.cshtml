@@ -1,0 +1,437 @@
+﻿@model Demo.Model.Admin.Settings.SettingsEditModel
+@section ExtendScripts
+    {
+    <script type="text/javascript" src="@Url.Content("/lib/form/style/switch.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/form/style/switchery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/moment/moment.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/moment/moment_locales.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/globalize/globalize.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/globalize/cultures/globalize.culture.vi.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/picker/daterangepicker/daterangepicker.js")"></script>
+    @Url.RenderScripts("/js/page", "settings.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.settings.init({
+                saveForm: "#formSettings",
+                saveUrl: "@Url.Action("savesettings", "admin")",
+                getMediaPopupUrl: "@Url.Action("getmediapopup", "admin")",
+                searchMediaUrl: "@Url.Action("getmediapopup", "admin")",
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>Thiết Lập Hệ Thống</h5>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formSettings" }))
+                        {
+                            @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+                            @Html.HiddenFor(m => m.Entity.Id)
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập chung
+                                        <small class="display-block">Các thiết lập cơ bản cho website.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.SiteName)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.SiteName, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.IconUrl)<i class="ml-10 icon-help text-slate" data-popup="popover" title="Icon Hiển thị Trên Mobile" data-trigger="hover" data-placement="top" data-html="true" data-content="Icon là hình *.png có kích thước 192x192px nền trong suốt. Được sử dụng làm Icon trên các thiết bị di động như iPhone, iPad, ..."></i></label>
+                                        <div class="col-xs-12">
+                                            <div class="input-group">
+                                                <input asp-for="Entity.IconUrl" class="form-control input-xs" type="text">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-xs bg-teal" type="button" onclick="comdy.settings.insertImage($('#Entity_IconUrl'))"><i class="fa fa-image"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.TitleTemplateType)</label>
+                                        <div class="col-xs-12">
+                                            @Html.EnumDropDownFor(m => m.Entity.TitleTemplateType, null, null, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.TitleSeparate)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.TitleSeparate, new { @class = "form-control input-xs", placeholder = "|" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.CompanyName)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.CompanyName, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.Address)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.Address, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.EmailContact)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.EmailContact, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.PhoneNumber)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.PhoneNumber, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (SessionHelper.CurrentUser.IsAdmin)
+                                {
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.GoogleConsoleVerification)</label>
+                                            <div class="col-xs-12">
+                                                @Html.TextBoxFor(m => m.Entity.GoogleConsoleVerification, new { @class = "form-control input-xs" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.BingVerification)</label>
+                                            <div class="col-xs-12">
+                                                @Html.TextBoxFor(m => m.Entity.BingVerification, new { @class = "form-control input-xs" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.YandexVerification)</label>
+                                            <div class="col-xs-12">
+                                                @Html.TextBoxFor(m => m.Entity.YandexVerification, new { @class = "form-control input-xs" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.Version)</label>
+                                            <div class="col-xs-12">
+                                                @Html.TextBoxFor(m => m.Entity.Version, new { @class = "form-control input-xs" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.HiddenFor(a => a.Entity.GoogleConsoleVerification)
+                                    @Html.HiddenFor(a => a.Entity.BingVerification)
+                                    @Html.HiddenFor(a => a.Entity.YandexVerification)
+                                    @Html.HiddenFor(a => a.Entity.Version)
+                                }
+
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập SEO
+                                        <small class="display-block">Cấu hình thông tin SEO cho trang chủ.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.Keywords)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextAreaFor(m => m.Entity.Keywords, 5, 10, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.Description)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextAreaFor(m => m.Entity.Description, 5, 10, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập mạng xã hội
+                                        <small class="display-block">Cấu hình thông tin mạng xã hội.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.FacebookUrl)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.FacebookUrl, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.TwitterUrl)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.TwitterUrl, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.GooglePlusUrl)</label>
+                                            <div class="col-xs-12">
+                                                @Html.TextBoxFor(m => m.Entity.GooglePlusUrl, new { @class = "form-control input-xs" })
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.YoutubeUrl)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.YoutubeUrl, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.PinterestUrl)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.PinterestUrl, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.InstagramUrl)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.InstagramUrl, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.LinkedInUrl)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.LinkedInUrl, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập bài viết
+                                        <small class="display-block">Cấu hình số lượng bài viết hiển thị trên 1 trang.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-6 control-label">@Html.LabelFor(m => m.Entity.PageSize)</label>
+                                        <div class="col-xs-6">
+                                            @Html.EnumDropDownFor(m => m.Entity.PageSize, null, null, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập phân tích người dùng
+                                        <small class="display-block">Google Analitics, Facebook Pixel được sử dụng để phân tích người dùng.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.GoogleAnalyticsKey)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.GoogleAnalyticsKey, new { @class = "form-control input-xs", placeholder = "UA-00000000-1" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.FacebookPixelId)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.FacebookPixelId, new { @class = "form-control input-xs", placeholder = "0000000000000000" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập chống spam
+                                        <small class="display-block">reCAPTCHA được sử dụng để chống spam.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.ReCaptchaSiteKey)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.ReCaptchaSiteKey, new { @class = "form-control input-xs", placeholder = "0AaAAAAAAAAAAAAAaaa000AaA0aaAa-aaaAAAaaA" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.ReCaptchaSecretKey)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.ReCaptchaSecretKey, new { @class = "form-control input-xs", placeholder = "0AaA0aAAAAAAAAaaA0A0aaaaAaAAAa-aaAaAaAa_" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập chat
+                                        <small class="display-block">Sử dụng Talk.to để chat với khách hàng.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 control-label">@Html.LabelFor(m => m.Entity.TalkToKey)</label>
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(m => m.Entity.TalkToKey, new { @class = "form-control input-xs", placeholder = "0AaAAAAAAAAAAAAAaaa000AaA0aaAa-aaaAAAaaA" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập Email
+                                        <small class="display-block">Các thiết lập liên quan tới SMTP Server để website có thể gửi email.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">@Html.LabelFor(m => m.Entity.SmtpServer)</label>
+                                        <div class="col-xs-9">
+                                            @Html.TextBoxFor(m => m.Entity.SmtpServer, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">@Html.LabelFor(m => m.Entity.SmtpPort)</label>
+                                        <div class="col-xs-9">
+                                            @Html.TextBoxFor(m => m.Entity.SmtpPort, new { @class = "form-control input-xs", placeholder = "smtp.gmail.com" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">@Html.LabelFor(m => m.Entity.SmtpFullName)</label>
+                                        <div class="col-xs-9">
+                                            @Html.TextBoxFor(m => m.Entity.SmtpFullName, new { @class = "form-control input-xs", placeholder = "COMDY.VN" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">@Html.LabelFor(m => m.Entity.SmtpUsername)</label>
+                                        <div class="col-xs-9">
+                                            @Html.TextBoxFor(m => m.Entity.SmtpUsername, new { @class = "form-control input-xs", placeholder = "Địa chỉ email" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">@Html.LabelFor(m => m.Entity.SmtpPassword)</label>
+                                        <div class="col-xs-9">
+                                            @Html.TextBoxFor(m => m.Entity.SmtpPassword, new { @class = "form-control input-xs", placeholder = "Mật khẩu email" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <div class="checkbox checkbox-switchery switchery-xs">
+                                                <label>
+                                                    @Html.CheckBoxFor(a => a.Entity.SmtpEnableSsl, new { @class = "switchery" })
+                                                    @Html.LabelFor(m => m.Entity.SmtpEnableSsl)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <h5 class="content-group text-primary">
+                                        Thiết lập Khai trương, bảo trì
+                                        <small class="display-block">Cấu hình ngày khai trương hoặc bảo trì hệ thống.</small>
+                                    </h5>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <div class="checkbox checkbox-switchery switchery-xs">
+                                                <label>
+                                                    @Html.CheckBoxFor(a => a.Entity.IsCommingSoon, new { @class = "switchery" })
+                                                    @Html.LabelFor(m => m.Entity.IsCommingSoon)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="opening-date" class="col-xs-6 @(Model.Entity.IsCommingSoon ? "" : "hidden")">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">@Html.LabelFor(m => m.Entity.OpeningDate)</label>
+                                        <div class="col-xs-9">
+                                            @Html.TextBox("Entity.OpeningDate", (Model.Entity.OpeningDate ?? DateTime.Now).ToString("dd/MM/yyyy HH:mm"), new { @class = "form-control input-xs", data_outside = true })
+                                            @*@Html.TextBoxFor(m => m.Entity.OpeningDate, new { @class = "form-control input-xs", data_outside = true })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="is-offline" class="col-xs-6 @(Model.Entity.IsCommingSoon ? "hidden" : "")">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <div class="checkbox checkbox-switchery switchery-xs">
+                                                <label>
+                                                    @Html.CheckBoxFor(a => a.Entity.IsOffline, new { @class = "switchery" })
+                                                    @Html.LabelFor(m => m.Entity.IsOffline)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <div class="col-xs-12 text-right">
+                                            <button onclick="comdy.settings.save()" type="button" class="btn btn-sm btn-success"><i class="fa fa-save"></i>&nbsp;Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,459 @@
+﻿@{
+    var widgets = await WidgetService.GetWidgetsAsync();
+}
+<!DOCTYPE html>
+<html dir="ltr" lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.FullTitle</title>
+    @if (!string.IsNullOrEmpty(Common.Settings.GoogleConsoleVerification))
+    {
+        <meta name="google-site-verification" content="@Common.Settings.GoogleConsoleVerification" />
+    }
+    @if (!string.IsNullOrEmpty(Common.Settings.BingVerification))
+    {
+        <meta name="msvalidate.01" content="@Common.Settings.BingVerification">
+    }
+    @if (!string.IsNullOrEmpty(Common.Settings.YandexVerification))
+    {
+        <meta name="yandex-verification" content="@Common.Settings.YandexVerification" />
+    }
+    <meta name="Language" content="vi">
+    @RenderSection("HeaderIncludes", required: false)
+    <meta name="apple-mobile-web-app-title" content="@Common.Settings.SiteName">
+    <meta name="application-name" content="@Common.Settings.SiteName">
+    <meta name="robots" content="index,follow">
+    <meta property="og:site_name" content="@Common.Settings.SiteName">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@ViewBag.FullTitle">
+    <meta property="og:image" content="@ViewBag.PhotoUrl">
+    <meta property="og:url" content="@ViewBag.FullUrl">
+    <meta property="og:locale" content="vi_VN">
+    <link rel="canonical" href="@ViewBag.FullUrl" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
+    <link rel="dns-prefetch" href="@ViewBag.Host" />
+    @if (!string.IsNullOrEmpty(Common.Settings.IconUrl))
+    {
+        <link rel="shortcut icon" href="@Common.Settings.IconUrl" type="image/png">
+        <link rel="icon" href="@Common.Settings.IconUrl" type="image/png">
+    }
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600" rel="stylesheet" />
+    @Url.RenderStyles("/themes/5b7d2b2090edcf03e87f8018/css",
+        "bootstrap.min.css",
+        "animate.min.css",
+        "fontawesome-all.min.css",
+        "owl.min.css",
+        "owl.theme.default.min.css",
+        "jquery.fancybox.min.css",
+        "magnific-popup.min.css",
+        "flexslider.min.css",
+        "icons.min.css",
+        "flaticon.min.css",
+        "style.css",
+        "responsive.min.css",
+        "custom.css")
+    @RenderSection("Styles", required: false)
+    @RenderSection("RichSnippets", required: false)
+    @if (!string.IsNullOrEmpty(Common.Settings.FacebookPixelId))
+    {
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '@Common.Settings.FacebookPixelId');
+            fbq('track', 'PageView');
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=@Common.Settings.FacebookPixelId&ev=PageView&noscript=1" />
+        </noscript>
+        <!-- End Facebook Pixel Code -->
+    }
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Preloader  -->
+        <div class="preloader">
+            <div class="loading">
+                <div class="wrapper">
+                    <div class="cssload-loader"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader End  -->
+        <!-- Main header  -->
+        <header class="main-header">
+            <!--Header Top-->
+            <div id="mosttop-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-12">
+                            <ul class="mosttop-bar-info">
+                                <li><i class="fas fa-phone"></i><a class="text-dark" href="tel:@Common.Settings.PhoneNumber">@Common.Settings.PhoneNumber.FormatPhoneNumber()</a></li>
+                                <li><i class="fa fa-envelope"></i><a class="text-dark" href="mailto:@Common.Settings.EmailContact">@Common.Settings.EmailContact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 col-12">
+                            <ul class="social-icons hidden-sm">
+                                @if (!string.IsNullOrEmpty(Common.Settings.FacebookUrl))
+                                {
+                                    <li>
+                                        <a href="@Common.Settings.FacebookUrl"
+                                           target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(Common.Settings.InstagramUrl))
+                                {
+                                    <li>
+                                        <a href="@Common.Settings.InstagramUrl"
+                                           target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(Common.Settings.TwitterUrl))
+                                {
+                                    <li>
+                                        <a href="@Common.Settings.TwitterUrl"
+                                           target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(Common.Settings.LinkedInUrl))
+                                {
+                                    <li>
+                                        <a href="@Common.Settings.LinkedInUrl"
+                                           target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(Common.Settings.PinterestUrl))
+                                {
+                                    <li>
+                                        <a href="@Common.Settings.PinterestUrl"
+                                           target="_blank" title="Pinterest"><i class="fab fa-pinterest"></i></a>
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(Common.Settings.YoutubeUrl))
+                                {
+                                    <li class="social-icons-youtube">
+                                        <a href="@Common.Settings.YoutubeUrl"
+                                           target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Header Top -->
+            <!-- Header Middle -->
+            <div class="header-middle">
+                <div class="inner-container">
+                    <div class="container clearfix">
+                        <div class="logo-middle">
+                            <div class="logo">
+                                <a href="/" title="@Common.Settings.SiteName"><img src="/themes/5b7d2b2090edcf03e87f8018/images/logo.png" alt="@Common.Settings.SiteName"></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-middle clearfix">
+                            <!-- Main Menu -->
+                            <nav class="main-menu navbar-expand-md navbar-light">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmobileshow" aria-controls="navmobileshow" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="icon fas fa-align-justify"></span>
+                                    </button>
+                                </div>
+
+                                <div class="collapse navbar-collapse clearfix" id="navmobileshow">
+                                    <ul class="navigation clearfix">
+                                        <li><a href="/trang/gioi-thieu">Giới Thiệu</a></li>
+                                        <li class="dropdown">
+                                            <a href="#">Sản Phẩm <i class="fa fa-angle-down d-none d-sm-inline"></i></a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Sản phẩm 1</a></li>
+                                                <li><a href="#">Sản phẩm 2</a></li>
+                                                <li><a href="#">Sản phẩm 3</a></li>
+                                                <li><a href="#">Sản phẩm 4</a></li>
+                                                <li><a href="#">Sản phẩm 5</a></li>
+                                                <li><a href="#">Sản phẩm 6</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Dự Án</a></li>
+                                        <li><a href="/blog">Tin Tức</a></li>
+                                        <li><a href="/lien-he">Liên Hệ</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <!-- Main Menu End-->
+                            <!-- Header Info box-->
+                            <div class="header-infobox clearfix">
+
+                                <div class="headercont-box">
+                                    <a href="tel:@Common.Settings.PhoneNumber" class="headerbtn-contact">
+                                        <span class="icon fa fa-headset"></span>
+                                        <div class="cont-widget">
+                                            <span class="title">Hỗ Trợ</span>
+                                            <span class="subtitle">@Common.Settings.PhoneNumber.FormatPhoneNumber()</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- header widget Box -->
+                                @*<div class="header-widgetbox clearfix">
+                                        <div class="header-searcbox">
+                                            <div class="dropdown">
+                                                <button class="search-box-btn dropdown-toggle" type="button" id="togglemenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
+                                                <ul class="dropdown-menu pull-right search-wrapper" aria-labelledby="togglemenuDropdown">
+                                                    <li class="seach-ineerbox">
+                                                        <div class="form-container">
+                                                            <form method="get" action="/blog">
+                                                                <div class="form-group">
+                                                                    <input type="search" name="q" id="q" value="" placeholder="Tìm Kiếm" required>
+                                                                    <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                            <!-- Header Info box end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Header Middle-->
+            <!-- Sticky Header  -->
+            <div class="sticky-header">
+                <div class="container clearfix">
+                    <!--Logo-->
+                    <div class="logo pull-left">
+                        <a href="/" title="@Common.Settings.SiteName"><img src="/themes/5b7d2b2090edcf03e87f8018/images/logo.png" alt="@Common.Settings.SiteName"></a>
+                    </div>
+                    <!--Right Menu Column-->
+                    <div class="pull-right">
+                        <!-- Main Menu -->
+                        <nav class="main-menu">
+                            <div class="navbar-collapse show collapse clearfix">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="/">Trang Chủ</a></li>
+                                    <li><a href="/trang/gioi-thieu">Giới Thiệu</a></li>
+                                    <li class="dropdown">
+                                        <a href="#">Sản Phẩm <i class="fa fa-angle-down d-none d-sm-inline"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">Sản phẩm 1</a></li>
+                                            <li><a href="#">Sản phẩm 2</a></li>
+                                            <li><a href="#">Sản phẩm 3</a></li>
+                                            <li><a href="#">Sản phẩm 4</a></li>
+                                            <li><a href="#">Sản phẩm 5</a></li>
+                                            <li><a href="#">Sản phẩm 6</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Dự Án</a></li>
+                                    <li><a href="/blog">Tin Tức</a></li>
+                                    <li><a href="/lien-he">Liên Hệ</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Main Menu End-->
+                    </div>
+                </div>
+            </div>
+            <!-- End Sticky Menu -->
+        </header>
+        <!-- End Main Header -->
+
+        @RenderBody()
+
+        <!-- Footer start -->
+        <footer class="site-footer">
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="widget about-widget">
+                                <div class="logo widget-title">
+                                    <img src="/themes/5b7d2b2090edcf03e87f8018/images/logo.png" alt="@Common.Settings.SiteName">
+                                </div>
+                                @if (widgets.Exists(a => a.Position == WidgetPosition.BottomLeft))
+                                {
+                                    @Html.Raw(widgets.FirstOrDefault(a => a.Position == WidgetPosition.BottomLeft).Content)
+                                }
+                                <div class="social-icons">
+                                    <ul>
+                                        @if (!string.IsNullOrEmpty(Common.Settings.FacebookUrl))
+                                        {
+                                            <li>
+                                                <a href="@Common.Settings.FacebookUrl"
+                                                   target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Common.Settings.InstagramUrl))
+                                        {
+                                            <li>
+                                                <a href="@Common.Settings.InstagramUrl"
+                                                   target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                            </li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Common.Settings.TwitterUrl))
+                                        {
+                                            <li>
+                                                <a href="@Common.Settings.TwitterUrl"
+                                                   target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Common.Settings.LinkedInUrl))
+                                        {
+                                            <li>
+                                                <a href="@Common.Settings.LinkedInUrl"
+                                                   target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Common.Settings.PinterestUrl))
+                                        {
+                                            <li>
+                                                <a href="@Common.Settings.PinterestUrl"
+                                                   target="_blank" title="Pinterest"><i class="fab fa-pinterest"></i></a>
+                                            </li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Common.Settings.YoutubeUrl))
+                                        {
+                                            <li class="social-icons-youtube">
+                                                <a href="@Common.Settings.YoutubeUrl"
+                                                   target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="widget link-widget">
+                                @if (widgets.Exists(a => a.Position == WidgetPosition.BottomMiddle))
+                                {
+                                    @Html.Raw(widgets.FirstOrDefault(a => a.Position == WidgetPosition.BottomMiddle).Content)
+                                }
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="widget link-widget service-link-widget">
+                                <div class="widget-title">
+                                    <h3>Dịch Vụ</h3>
+                                </div>
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="widget newsletter-widget">
+                                <div class="widget-title">
+                                    <h3>Đăng Ký Nhận Tin</h3>
+                                </div>
+                                <p>Đăng Ký Nhận Tin Khuyến Mãi Hấp Dẫn Từ Chúng Tôi</p>
+                                <form id="subscribe-form" class="contact-form" novalidate="novalidate" method="post" action="/dang-ky">
+                                    <div class="input-1">
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required="">
+                                    </div>
+                                    <div class="submit clearfix">
+                                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div>
+                                        <div id="loading" style="display:none"><img src="/themes/5b7d2b2090edcf03e87f8018/images/loading.gif" alt="loading"></div>
+                                        <div class="contact-form-message"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="separator"></div>
+                        <div class="col col-xs-12">
+                            <p class="copyright">Copyright &copy; @DateTime.Now.Year. All rights reserved. Powered by <a href="https://comdy.vn" target="_blank">Comdy.vn</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+    </div>
+    <!--Scroll to top-->
+    <button class="scroll-totop"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+
+    @*<a href="tel:@Common.Settings.PhoneNumber">
+            <div class="call-now">
+                <div class="animated infinite zoomIn call-now-ph-circle"></div>
+                <div class="animated infinite pulse call-now-ph-circle-fill"></div>
+                <div class="animated infinite tada call-now-ph-img-circle"></div>
+            </div>
+        </a>*@
+    @Url.RenderScripts("/themes/5b7d2b2090edcf03e87f8018/js",
+        "jquery.min.js",
+        "popper.min.js",
+        "bootstrap.min.js",
+        "wow.min.js",
+        "jquery.counterup.min.js",
+        "waypoints.min.js",
+        "owl.min.js",
+        "jquery.fancybox.min.js",
+        "jquery.magnific-popup.min.js",
+        "validation.min.js",
+        "isotope.min.js",
+        "jquery.easing.min.js",
+        "custom.js")
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            var pathname = window.location.pathname.toLowerCase();
+            $(".navigation li.current").removeClass("current");
+            $(".navigation a").each(function () {
+                var url = $(this).attr("href");
+                if (url === pathname || (url !== "/" && pathname.startsWith(url))) {
+                    $(this).parent().addClass("current");
+                    if ($(this).parent().parent().hasClass("sub-menu")) {
+                        $(this).parent().parent().parent().addClass("current");
+                    }
+                    return;
+                }
+            });
+
+        });
+
+        @if (!Common.IsDevelopment && !string.IsNullOrEmpty(Common.Settings.GoogleAnalyticsKey))
+        {
+            <text>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','@Common.Settings.GoogleAnalyticsKey','auto');ga('send','pageview');</text>
+        }
+        @if (!Common.IsDevelopment && !string.IsNullOrEmpty(Common.Settings.TalkToKey))
+        {
+            <text>
+                var Tawk_API = Tawk_API || { }, Tawk_LoadStart = new Date();
+                (function() {
+                    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                    s1.async = true;
+                    s1.src = 'https://embed.tawk.to/@Common.Settings.TalkToKey/default';
+                    s1.charset = 'UTF-8';
+                    s1.setAttribute('crossorigin', '*');
+                    s0.parentNode.insertBefore(s1, s0);
+                })();
+            </text>
+        }
+    </script>
+</body>
+</html>

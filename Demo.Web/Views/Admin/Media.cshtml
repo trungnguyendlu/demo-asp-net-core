@@ -1,0 +1,37 @@
+﻿@model Demo.Model.Admin.Media.MediaIndexModel
+@section ExtendScripts
+    {
+    <script type="text/javascript" src="@Url.Content("/lib/media/fancybox.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/uploader/dropzone.min.js")"></script>
+    @Url.RenderScripts("/js/page", "media.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.media.init({
+                saveForm: "#formMedia",
+                saveFormInput: "#formMedia input",
+                pageSize: "#Paging_PageSize",
+                pageNumber: "#Paging_PageNumber",
+                searchForm: "#formSearchMedia",
+                searchFormInput: "#formSearchMedia input",
+                resultContent: "#results",
+                name: "#Entity_Name",
+                url: "#Entity_Url",
+                searchUrl: "@Url.Action("media", "admin")",
+                createUrl: "@Url.Action("createmedia", "admin")",
+                editUrl: "@Url.Action("editmedia", "admin")",
+                saveUrl: "@Url.Action("savemedia", "admin")",
+                deleteUrl: "@Url.Action("deletemedia", "admin")"
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>Quản Lý Thư Viện</h5>
+        <hr />
+        @await Html.PartialAsync("Media/_MediaFilter")
+    </div>
+    <div id="results">
+        @await Html.PartialAsync("Media/_MediaResult")
+    </div>
+</div>

@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.FullTitle</title>
+    @if (!string.IsNullOrEmpty(Common.Settings.IconUrl))
+    {
+        <link rel="icon" type="image/png" href="@Common.Settings.IconUrl" />
+    }
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900&subset=vietnamese" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/icons/icomoon/styles.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/icons/fontawesome/styles.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/css/core.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/css/components.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/css/colors.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/css/validate.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/css/site.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("ExtendStyles", false)
+</head>
+<body class="navbar-top">
+    @await Html.PartialAsync("Inc/_Loading")
+    <!-- Main navbar -->
+    <div class="navbar-fixed-top">
+        <div class="navbar navbar-inverse bg-slate">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/images/comdy-admin-logo.png" alt="Comdy"></a>
+                <ul class="nav navbar-nav visible-xs-block">
+                    <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                    <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-mobile">
+                <ul class="nav navbar-nav">
+                    <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+                </ul>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        @*todo<li>
+                                <a href="@Url.Action("notification", "admin")" title="Thông báo">
+                                    <i class="icon-bell2"></i>
+                                    <span class="visible-xs-inline-block position-right">Thông báo</span>
+                                    @if (totalNotifications > 0)
+                                    {
+                                        <span class="badge bg-warning-400">@totalNotifications</span>
+                                    }
+                                </a>
+                            </li>*@
+                        @*@if (SessionHelper.HasPermission(FunctionType.MessageView))
+                        {
+                            <li>
+                                <a href="@Url.Action("message", "admin")">
+                                    <i class="icon-envelop3"></i>
+                                    <span class="visible-xs-inline-block position-right">Tin nhắn</span>
+                                    <span class="badge bg-warning-400">@MessageService.CountTotalNewMessages()</span>
+                                </a>
+                            </li>
+                        }*@
+                        <li class="dropdown dropdown-user">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <img id="navbar-user-avatar" src="@(SessionHelper.CurrentUser?.AvatarUrl ?? "/images/avatar_placeholder.png")" alt="">
+                                <span>@(SessionHelper.CurrentUser?.FullName ?? "Tài khoản")</span>
+                                <i class="caret"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="javascript:;" onclick="comdy.admin.myProfilePopup()"><i class="icon-user"></i> Tài khoản của tôi</a></li>
+                                <li><a href="javascript:;" onclick="comdy.admin.changePasswordPopup()"><i class="icon-key"></i> Đổi mật khẩu</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/logout"><i class="icon-switch2"></i> Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main bg-slate-700">
+                <div class="category-content no-padding">
+                    <ul id="main-menu" class="navigation navigation-main navigation-accordion">
+
+                        <!-- Menu -->
+                        <li><a href="@Url.Action("index", "admin")"><i class="icon-display"></i> <span>Dashboard</span></a></li>
+                        @if (SessionHelper.HasPermission(FunctionType.ProductView) ||
+                      SessionHelper.HasPermission(FunctionType.ServiceView) ||
+                      SessionHelper.HasPermission(FunctionType.ProjectView) ||
+                      SessionHelper.HasPermission(FunctionType.PartnerView))
+                        {
+                            <li class="navigation-header"><span>Chức Năng</span> <i class="icon-menu" title="Chức Năng"></i></li>
+
+                            @if (SessionHelper.HasPermission(FunctionType.ProductView))
+                            {
+                                <li><a href="@Url.Action("product", "admin")"><i class="icon-server"></i> <span>Sản phẩm</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.ServiceView))
+                            {
+                                <li><a href="@Url.Action("service", "admin")"><i class="icon-stack2"></i> <span>Dịch Vụ</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.ProjectView))
+                            {
+                                <li><a href="@Url.Action("project", "admin")"><i class="icon-cabinet"></i> <span>Dự Án</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.GalleryView))
+                            {
+                                <li><a href="@Url.Action("gallery", "admin")"><i class="icon-image2"></i> <span>Hình Ảnh</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.PartnerView))
+                            {
+                                <li><a href="@Url.Action("partner", "admin")"><i class="icon-user-tie"></i> <span>Đối Tác</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.ProductCategoryView))
+                            {
+                                <li><a href="@Url.Action("productcategory", "admin")"><i class="icon-tree7"></i> <span>Loại Sản Phẩm</span></a></li>
+                            }
+                            @*@if (SessionHelper.HasPermission(FunctionType.ServiceCategoryView))
+                            {
+                                <li><a href="@Url.Action("servicecategory", "admin")"><i class="icon-files-empty"></i> <span>Loại Dịch Vụ</span></a></li>
+                            }*@
+                        }
+
+                        @if (SessionHelper.HasPermission(FunctionType.PostView) ||
+                   SessionHelper.HasPermission(FunctionType.CategoryView) ||
+                   SessionHelper.HasPermission(FunctionType.MediaView))
+                        {
+                            <li class="navigation-header"><span>Blog</span> <i class="icon-menu" title="Blog"></i></li>
+                            @if (SessionHelper.HasPermission(FunctionType.PostView))
+                            {
+                                <li><a href="@Url.Action("post", "admin")"><i class="icon-newspaper"></i> <span>Bài viết</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.CategoryView))
+                            {
+                                <li><a href="@Url.Action("category", "admin")"><i class="icon-tree7"></i> <span>Chuyên mục</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.MediaView))
+                            {
+                                <li><a href="@Url.Action("media", "admin")"><i class="icon-images2"></i> <span>Thư viện</span></a></li>
+                            }
+                        }
+
+                        <!-- System -->
+                        @if (SessionHelper.HasPermission(FunctionType.RoleView) ||
+                   SessionHelper.HasPermission(FunctionType.UserView) ||
+                   SessionHelper.HasPermission(FunctionType.PageView) ||
+                   SessionHelper.HasPermission(FunctionType.SliderView) ||
+                   SessionHelper.HasPermission(FunctionType.LandingPageView) ||
+                   SessionHelper.HasPermission(FunctionType.WidgetView) ||
+                   SessionHelper.HasPermission(FunctionType.SubscribeView))
+                        {
+                            <li class="navigation-header"><span>Hệ thống</span> <i class="icon-menu" title="Hệ thống"></i></li>
+                            @if (SessionHelper.HasPermission(FunctionType.SliderView))
+                            {
+                                <li><a href="@Url.Action("slider", "admin")"><i class="icon-images3"></i> <span>Slider</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.PageView))
+                            {
+                                <li><a href="@Url.Action("page", "admin")"><i class="icon-stack"></i> <span>Trang</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.LandingPageView))
+                            {
+                                <li><a href="@Url.Action("landingpage", "admin")"><i class="icon-file-text"></i> <span>Landing Page</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.WidgetView))
+                            {
+                                <li><a href="@Url.Action("widget", "admin")"><i class="icon-puzzle3"></i> <span>Widget</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.SubscribeView))
+                            {
+                                <li><a href="@Url.Action("subscribe", "admin")"><i class="icon-envelop5"></i> <span>Subscribe</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.RoleView))
+                            {
+                                <li><a href="@Url.Action("role", "admin")"><i class="icon-users4"></i> <span>Phân quyền</span></a></li>
+                            }
+                            @if (SessionHelper.HasPermission(FunctionType.UserView))
+                            {
+                                <li><a href="@Url.Action("user", "admin")"><i class="icon-user"></i> <span>Người dùng</span></a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Page header -->
+                <div class="page-header page-header-default">
+                    <div class="breadcrumb-line">
+                        <ul class="breadcrumb">
+                            <li><a href="@Url.Action("index", "admin")"><i class="icon-home2 position-left"></i> Trang chủ</a></li>
+                            <li class="active">@ViewBag.Title</li>
+                        </ul>
+
+                        <ul class="breadcrumb-elements">
+                            <li><a href="https://comdy.vn/hoi-dap" target="_blank"><i class="icon-help position-left"></i> Hỏi đáp</a></li>
+                            <li><a href="https://comdy.vn/wiki" target="_blank"><i class="icon-book3 position-left"></i> Trung tâm hỗ trợ</a></li>
+                            @*todo@if (SessionHelper.HasPermission(FunctionType.TicketCreate))
+                                {
+                                    <li><a href="javascript:;" onclick="comdy.admin.createTicketPopup()"><i class="icon-file-plus position-left"></i> Yêu cầu hỗ trợ</a></li>
+                                }*@
+                            @if (SessionHelper.HasPermission(FunctionType.SettingsEdit))
+                            {
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-gear position-left"></i>Hệ Thống<span class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="@Url.Action("settings", "admin")"><i class="icon-cogs"></i> Thiết lập hệ thống</a></li>
+                                        <li><a href="https://mail.yandex.com" target="_blank"><i class="icon-mail-read"></i> Email doanh nghiệp</a></li>
+                                        <li><a href="https://dashboard.tawk.to/#/dashboard" target="_blank"><i class="icon-bubbles4"></i> Chat với khách hàng</a></li>
+                                    </ul>
+                                </li>
+                            }
+
+                            @*todo@if (SessionHelper.HasPermission(FunctionType.SettingsEdit) ||
+                                SessionHelper.HasPermission(FunctionType.ThemeChange) ||
+                                SessionHelper.HasPermission(FunctionType.TicketCreate) ||
+                                SessionHelper.HasPermission(FunctionType.ThemeEdit))
+                                    {
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-cogs position-left"></i>
+                                                Cài đặt
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                @if (SessionHelper.HasPermission(FunctionType.SettingsEdit))
+                                                {
+                                                    <li><a href="@Url.Action("settings", "admin")"><i class="icon-gear"></i> Cấu hình Hệ thống</a></li>
+                                                }
+                                                @if (SessionHelper.HasPermission(FunctionType.ThemeChange))
+                                                {
+                                                    <li><a href="@Url.Action("theme", "admin")"><i class="icon-paint-format"></i> Quản lý Giao diện</a></li>
+                                                }
+                                                @if (SessionHelper.HasPermission(FunctionType.ThemeEdit))
+                                                {
+                                                    <li><a href="@Url.Action("themesettings", "admin")"><i class="icon-brush"></i> Cấu hình Giao diện</a></li>
+                                                }
+                                                @if (SessionHelper.HasPermission(FunctionType.TicketCreate))
+                                                {
+                                                    <li><a href="@Url.Action("ticket", "admin")"><i class="icon-files-empty"></i> Quản lý Hỗ trợ</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }*@
+                        </ul>
+                    </div>
+                </div>
+                <!-- /page header -->
+                <!-- Content area -->
+                <div class="content">
+                    @*todo@if (totalNotifications > 0)
+                        {
+                            var notification = await NotificationService.GetLatestNotificationAsync();
+                            if (notification != null)
+                            {
+                                <div class="@notification.GetCssClass() alert-styled-left">
+                                    <button type="button" class="close" data-dismiss="alert" onclick="comdy.notification.mark('@notification.Id', false, null)"><span>×</span><span class="sr-only">Đóng</span></button>
+                                    @Html.Raw(notification.Message)
+                                </div>
+                            }
+                        }*@
+                    @RenderBody()
+
+                    <!-- Footer -->
+                    <div class="footer text-muted text-center">
+                        Copyright &copy; @DateTime.Now.Year by <a href="https://comdy.vn">Comdy.vn</a>. All rights reserved.
+                    </div>
+                    <!-- /footer -->
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+    @await Html.PartialAsync("Inc/_Modal")
+    @await Html.PartialAsync("Inc/_MediaModal")
+
+    <script src="@Url.Content("/js/core/libraries/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/jquery-migrate-1.2.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/jquery-ui-1.10.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/lib/form/style/uniform.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/lib/loader/blockui.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/lib/notification/pnotify.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/lib/notification/sweet_alert.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/lib/uploader/dropzone.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/libraries/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/app.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/core/common.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/page/admin.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        window = $.extend(window, {
+            rootPath: '@Url.Content("/")',
+            authenUrl: '/login',
+            homeUrl: '@Url.Action("index", "admin")'
+        });
+
+        $(function () {
+            var pathname = window.location.pathname.toLowerCase();
+            $("#main-menu li.active").removeClass("active");
+            $("#main-menu li a").each(function () {
+                if ($(this).attr("href") === pathname) {
+                    $(this).parent().addClass("active");
+                    return;
+                }
+            });
+            $(".styled").uniform();
+
+            //notify
+            var message = '@(TempData[Constants.Message] != null ? TempData[Constants.Message].ToString() : string.Empty)';
+            if (message !== "") {
+                comdy.common.successNotify(message);
+            }
+
+            comdy.admin.init({
+                myProfileUrl: "@Url.Action("myprofile", "admin")",
+                changePasswordUrl: "@Url.Action("changepassword", "admin")",
+                changePasswordForm: "#formChangePassword",
+                createTicketUrl: "@Url.Action("createticket", "admin")",
+                saveTicketUrl: "@Url.Action("saveticket", "admin")",
+                formTicket: "#formTicket",
+                getMediaPopupUrl: "@Url.Action("getmediapopup", "admin")",
+                searchMediaUrl: "@Url.Action("getmediapopup", "admin")",
+                updateAvatarUrl: "@Url.Action("updateavatar", "admin")"
+            });
+        });
+    </script>
+    @RenderSection("ExtendScripts", false)
+</body>
+</html>

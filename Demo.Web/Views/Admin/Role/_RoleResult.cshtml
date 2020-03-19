@@ -1,0 +1,48 @@
+﻿@model Demo.Model.Admin.Role.RoleIndexModel
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Người tạo</th>
+                        <th>Ngày tạo</th>
+                        <th style="width: 80px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Results)
+                    {
+                        <tr>
+                            <td>
+                                @if (SessionHelper.HasPermission(FunctionType.RoleEdit))
+                                {
+                                    <a href="javascript:;" onclick="comdy.role.edit('@item.Id')">@item.Name</a>
+                                }
+                                else
+                                {
+                                    @item.Name
+                                }
+                            </td>
+                            <td>@item.Description</td>
+                            <td>@item.CreatedUser</td>
+                            <td>@item.CreatedDate.ToShortDateTimeString()</td>
+                            <td style="text-align: center;">
+                                @if (SessionHelper.HasPermission(FunctionType.RoleDelete))
+                                {
+                                    <a href="javascript:;" class="text-danger" onclick="comdy.role.delete('@item.Id');"><i class="fa fa-trash-o"></i>&nbsp;Xóa</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @Html.DisplayFor(a => Model.Results.Count, "_NoData")
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    @Html.PaginationFor(m => m.Paging)
+</div>

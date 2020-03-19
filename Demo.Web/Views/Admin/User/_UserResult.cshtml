@@ -1,0 +1,50 @@
+﻿@model Demo.Model.Admin.User.UserIndexModel
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Họ tên</th>
+                        <th>Quyền</th>
+                        <th>Tình trạng</th>
+                        <th>Ngày đăng nhập</th>
+                        <th style="width: 80px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Results)
+                    {
+                        <tr>
+                            <td>
+                                @if (SessionHelper.HasPermission(FunctionType.UserEdit))
+                                {
+                                    <a href="javascript:;" onclick="comdy.user.edit('@item.Id')">@item.Email</a>
+                                }
+                                else
+                                {
+                                    @item.Email
+                                }
+                            </td>
+                            <td>@item.FullName</td>
+                            <td>@item.RoleName</td>
+                            <td>@item.Status.GetDescription()</td>
+                            <td>@item.LastLoginDate.ToShortDateTimeNullString()</td>
+                            <td style="text-align: center;">
+                                @if (SessionHelper.HasPermission(FunctionType.UserDelete))
+                                {
+                                    <a href="javascript:;" class="text-danger" onclick="comdy.user.delete('@item.Id');"><i class="fa fa-trash-o"></i>&nbsp;Xóa</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @Html.DisplayFor(a => Model.Results.Count, "_NoData")
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    @Html.PaginationFor(m => m.Paging)
+</div>

@@ -1,0 +1,36 @@
+﻿@model Demo.Model.Admin.Post.PostIndexModel
+@section ExtendScripts
+    {
+    @Url.RenderScripts("/js/page", "post.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.post.init({
+                saveForm: "#formPost",
+                saveFormInput: "#formPost input",
+                pageSize: "#Paging_PageSize",
+                pageNumber: "#Paging_PageNumber",
+                searchForm: "#formSearchPost",
+                searchFormInput: "#formSearchPost input",
+                resultContent: "#results",
+                name: "#Entity_Name",
+                slug: "#Entity_Slug",
+                getSlugUrl: "@Url.Action("getslug", "admin")",
+                searchUrl: "@Url.Action("post", "admin")",
+                createUrl: "@Url.Action("createpost", "admin")",
+                editUrl: "@Url.Action("editpost", "admin")",
+                saveUrl: "@Url.Action("savepost", "admin")",
+                deleteUrl: "@Url.Action("deletepost", "admin")"
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>Quản Lý Bài Viết</h5>
+        <hr />
+        @await Html.PartialAsync("Post/_PostFilter")
+    </div>
+    <div id="results">
+        @await Html.PartialAsync("Post/_PostResult")
+    </div>
+</div>

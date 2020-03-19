@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.FullTitle</title>
+    <meta name="google-site-verification" content="KCHwI-mPT4Q_VyQGqYiyGyGum2rEcfOIEXfbizJhV6s" />
+    @if (!string.IsNullOrEmpty(Common.Settings.IconUrl))
+    {
+        <link rel="icon" type="image/png" href="@Common.Settings.IconUrl" />
+    }
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900&subset=vietnamese" rel="stylesheet" type="text/css" />
+    <link href="/icons/icomoon/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="/css/colors.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="login-container">
+    <div class="page-container">
+        <div class="page-content">
+            <div class="content-wrapper">
+                <div class="content">
+                    @RenderBody();
+                    <div class="footer text-muted text-center">
+                        Copyright &copy; @DateTime.Now.Year by <a href="https://comdy.vn">Comdy.vn</a>. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Core JS files -->
+    @*<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>*@
+    <script type="text/javascript" src="/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/lib/form/style/uniform.min.js"></script>
+    <script type="text/javascript" src="/js/core/app.js"></script>
+    <script type="text/javascript" src="/js/page/login.js"></script>
+    <!-- /core JS files -->
+</body>
+</html>

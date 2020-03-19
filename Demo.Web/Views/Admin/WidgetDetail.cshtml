@@ -1,0 +1,96 @@
+﻿@model Demo.Model.Admin.Widget.WidgetEditModel
+@section ExtendScripts
+    {
+    <script type="text/javascript" src="@Url.Content("/lib/editor/summernote/summernote.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/editor/summernote/lang/summernote-vi-VN.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/editor/summernote/summernote-image-title.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/form/style/switch.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/form/style/switchery.min.js")"></script>
+    <script src="/js/page/widgetdetail.js?v=@Common.Settings.Version"></script>
+    <script type="text/javascript">
+        $(function () {
+            comdy.widgetdetail.init({
+                id: "#Entity_Id",
+                isEdit: @(Model.IsEdit ? "true" : "false"),
+                saveForm: "#formSave",
+                saveFormInput: "#formSave input",
+                content: "#Entity_Content",
+                saveUrl: "@Url.Action("savewidget", "admin")",
+                editUrl: "@Url.Action("editwidget", "admin", new { id = Model.Entity.Id })"
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="col-xs-12">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formSave" }))
+        {
+            @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+            @Html.HiddenFor(m => m.IsEdit)
+            @Html.HiddenFor(m => m.Entity.Id)
+            @Html.Hidden("Entity.Content")
+            <div class="panel panel-default">
+                <div class="panel-body pb-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.Title): (*)</label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.Entity.Title, new { @class = "form-control input-xs" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.Position): (*)</label>
+                                <div class="col-md-12">
+                                    @Html.EnumDropDownFor(m => m.Entity.Position, null, null, new { @class = "form-control input-xs" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox checkbox-switchery switchery-xs">
+                                        <label>
+                                            @Html.CheckBoxFor(a => a.Entity.IsActive, new { @class = "switchery" })
+                                            Xuất bản
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-xs-12 text-right">
+                                    @if (SessionHelper.HasPermission(FunctionType.WidgetCreate) ||
+                                        SessionHelper.HasPermission(FunctionType.WidgetEdit))
+                                    {
+                                        <button onclick="comdy.widgetdetail.save()" type="button" class="btn btn-sm btn-success"><i class="fa fa-save"></i>&nbsp;Lưu</button>
+                                    }
+                                    <a href="@Url.Action("widget", "admin")" class="btn btn-warning"><i class="fa fa-remove"></i> Thoát</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-20">
+                            <div class="form-group">
+                                <label class="col-md-12 col-sm-6 col-md-6 control-label">@Html.LabelFor(m => m.Entity.Content): (*)</label>
+                                <div class="col-md-12 col-sm-6 col-md-6">
+                                    <button type="button" class="btn btn-xs bg-teal pull-right" onclick="comdy.admin.insertImage(8)"><i class="fa fa-image fa-fw"></i>&nbsp;Chèn hình ảnh</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="summernote">
+                                        @Html.Raw(Model.Entity.Content)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

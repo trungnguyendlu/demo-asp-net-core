@@ -1,0 +1,151 @@
+﻿@using MongoDB.Driver;
+@model Demo.Model.Post.PostDetailModel
+
+@section HeaderIncludes {
+    @if (!string.IsNullOrEmpty(Model.Entity.Keyword))
+    {
+        <meta name="keywords" content="@Model.Entity.Keyword">
+    }
+    @if (!string.IsNullOrEmpty(Model.Entity.Description))
+    {
+        <meta name="description" content="@Model.Entity.Description">
+        <meta property="og:description" content="@Model.Entity.Description">
+    }
+    <meta itemprop="datePublished" property="article:published_time" content="@Model.Entity.PublishedDate.ToString()">
+}
+@section RichSnippets {
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "@Html.Raw(Common.Settings.SiteName)",
+        "item": "@ViewBag.Host"
+        },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "Tin Tức",
+        "item": "@ViewBag.Host/blog"
+        },{
+        "@@type": "ListItem",
+        "position": 3,
+        "name": "@Html.Raw(Model.Entity.Title)",
+        "item": "@ViewBag.Host/blog/@Model.Entity.Slug"
+        }]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@graph": [
+        {
+        "@@type": "BlogPosting",
+        "name": "@Html.Raw(Model.Entity.Title)",
+        "headline": "@Html.Raw(Model.Entity.Title)",
+        "description": "@Html.Raw(Model.Entity.Description)",
+        "about": "@Html.Raw(Model.Entity.Category.Name)",
+        "image": {
+        "@@type": "ImageObject",
+        "representativeOfPage": "True",
+        "url": "@ViewBag.PhotoUrl"
+        },
+        "datePublished": "@Model.Entity.PublishedDate.ToString()",
+        "isAccessibleForFree": "True",
+        "dateModified": "@((Model.Entity.UpdatedDate ?? Model.Entity.CreatedDate).ToString())",
+        "author": {
+        "@@type": "Person",
+        "name": "@Html.Raw(Common.Settings.SiteName)"
+        },
+        "publisher": {
+        "@@type": "Organization",
+        "@@id": "@ViewBag.Host",
+        "name": "@Html.Raw(Common.Settings.SiteName)",
+        "url": "@ViewBag.Host",
+        "logo": {
+        "@@type": "ImageObject",
+        "url": "@ViewBag.Host@Common.Settings.IconUrl"
+        }
+        },
+        "mainEntityOfPage": "@ViewBag.FullUrl"
+        }
+        ]
+        }
+    </script>
+}
+<section class="page-title">
+    <div class="auto-container">
+        <h1>Tin Tức</h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Trang Chủ</a></li>
+            <li><a href="/blog">Tin Tức</a></li>
+            <li class="active">@Model.Entity.Title</li>
+        </ul>
+    </div>
+</section>
+<div class="news-section blog-detail pagetoppadd">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <!--Blog Details-->
+                        <div class="news-item wow fadeInUp" data-wow-delay="0ms">
+                            <div class="news_box">
+                                <a class="news_box_ovrlay" href="#"></a>
+                                <div class="newsimg">
+                                    <img class="img-responsive" src="@Model.Entity.PhotoUrl" alt="@Model.Entity.Title">
+                                </div>
+                                <div class="news-content">
+                                    <div class="news_postdate">
+                                        <span><i class="fa fa-calendar"></i> @Model.Entity.CreatedDate.ToShortDateTimeString()</span>
+                                        <span class="ml-20"><i class="fa fa-folder-open"></i> @Model.Entity.Category.Name</span>
+                                    </div>
+                                    <h3>@Model.Entity.Title</h3>
+
+                                    @Html.Raw(Model.Entity.Content)
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Blog Details End-->
+
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-12">
+                        <h4 class="mb-20">Bài Viết Liên Quan</h4>
+                    </div>
+                    @foreach (var item in Model.RelatedPosts)
+                    {
+                        <!--Single News Start-->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="news-item">
+                                <div class="news_box">
+                                    <a class="news_box_ovrlay" href="#"></a>
+                                    <div class="newsimg">
+                                        <img class="img-responsive ratio-5-3" src="@item.ThumbnailUrl" alt="@item.Title">
+                                    </div>
+                                    <div class="news-content">
+                                        <div class="news_postdate">
+                                            <span><i class="fa fa-calendar"></i> @item.CreatedDate.ToShortDateTimeString()</span>
+                                        </div>
+                                        <a href="@item.GetUrl()" title="@item.Title">
+                                            <h3>@item.Title.Truncate(50)</h3>
+                                        </a>
+                                        <p class="text-justify mb-0">@item.Description.Truncate(100)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Single News End-->
+                    }
+                </div>
+            </div>
+            <div class="sidebar col-lg-4 col-md-12">
+                @await Html.PartialAsync($"{Common.WebSetting.ThemeId}/_RightBar", Model.RightBar)
+            </div>
+        </div>
+    </div>
+</div>

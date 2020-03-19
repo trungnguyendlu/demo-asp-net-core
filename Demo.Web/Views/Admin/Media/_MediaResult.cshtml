@@ -1,0 +1,50 @@
+﻿@model Demo.Model.Admin.Media.MediaIndexModel
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 100px;">Hình ảnh</th>
+                        <th>Tên</th>
+                        <th>Phân Loại</th>
+                        <th>Người tạo</th>
+                        <th>Ngày tạo</th>
+                        <th style="width: 80px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Results)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Content(item.Url)" data-popup="lightbox">
+                                    <img src="@Url.Content(item.Url)" alt="@item.Title" class="img-rounded img-preview">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="javascript:;" onclick="comdy.media.edit('@item.Id')">@(item.Title ?? "(Chưa có tên)")</a>
+                                <br />Kích thước: @item.Width x @item.Height
+                                <br />Loại file:  @item.FileType
+                                <br />Dung lượng: @item.FileSize <text>&nbsp;KB</text>
+                            </td>
+                            <td>@(item.Type != null ? item.Type.GetDescription() : "")</td>
+                            <td>@item.CreatedUser</td>
+                            <td>@item.CreatedDate.ToShortDateTimeString()</td>
+                            <td style="text-align: center;">
+                                @if (SessionHelper.HasPermission(FunctionType.MediaDelete))
+                                {
+                                    <a href="javascript:;" class="text-danger" onclick="comdy.media.delete('@item.Id');"><i class="fa fa-trash-o"></i>&nbsp;Xóa</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @Html.DisplayFor(a => Model.Results.Count, "_NoData")
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    @Html.PaginationFor(m => m.Paging)
+</div>

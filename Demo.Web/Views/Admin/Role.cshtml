@@ -1,0 +1,34 @@
+﻿@model Demo.Model.Admin.Role.RoleIndexModel
+@section ExtendScripts
+    {
+    @Url.RenderScripts("/js/page", "role.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.role.init({
+                saveForm: '#formRole',
+                saveFormInput: '#formRole input',
+                pageSize: '#Paging_PageSize',
+                pageNumber: '#Paging_PageNumber',
+                searchForm: '#formSearchRole',
+                searchFormInput: '#formSearchRole input',
+                resultContent: '#results',
+                searchUrl: '@Url.Action("role", "admin")',
+                createUrl: '@Url.Action("createrole", "admin")',
+                editUrl: '@Url.Action("editrole", "admin")',
+                saveUrl: '@Url.Action("saverole", "admin")',
+                deleteUrl: '@Url.Action("deleterole", "admin")'
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h5>Quản Lý Phân Quyền</h5>
+        <hr />
+        @await Html.PartialAsync("Role/_RoleFilter")
+    </div>
+    <div id="results">
+        @await Html.PartialAsync("Role/_RoleResult")
+    </div>
+</div>

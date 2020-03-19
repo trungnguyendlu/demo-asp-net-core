@@ -1,0 +1,61 @@
+﻿@model Demo.Model.Admin.Media.MediaEditModel
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            @if (Model.IsEdit)
+            {
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formMedia" }))
+                {
+                    @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+                    @Html.HiddenFor(m => m.IsEdit)
+                    @Html.HiddenFor(m => m.Entity.Id)
+                    <div class="col-xs-6">
+                        <div class="thumbnail">
+                            <a href="@Url.Content(Model.Entity.Url)" data-popup="lightbox">
+                                <img src="@Url.Content(Model.Entity.Url)" alt="@Model.Entity.Title">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Title)*</label>
+                            <div class="col-xs-8">
+                                @Html.TextBoxFor(m => m.Entity.Title, new { @class = "form-control input-xs" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Type)</label>
+                            <div class="col-xs-8">
+                                @Html.EnumDropDownFor(m => m.Entity.Type, null, null, new { @class = "form-control input-xs" })
+                            </div>
+                        </div>
+                        <h6 class="text-semibold no-margin-top">Thông tin hình ảnh</h6>
+                        <ul class="list list-unstyled">
+                            <li>Đường dẫn: <span class="text-semibold">@Model.Entity.Url</span></li>
+                            <li>Kích thước: <span class="text-semibold">@Model.Entity.Width x @Model.Entity.Height</span></li>
+                            <li>Loại file: <span class="text-semibold">@Model.Entity.FileType</span></li>
+                            <li>Dung lượng: <span class="text-semibold">@Model.Entity.FileSize KB</span></li>
+                        </ul>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.MediaType)</label>
+                        <div class="col-xs-8">
+                            @Html.EnumDropDownFor(m => m.MediaType, null, null, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                @using (Html.BeginForm("UploadMedia", "Admin", FormMethod.Post, new { @class = "dropzone", id = "dropzone" }))
+                {
+                    @Html.HiddenFor(a => Model.Entity.Type)
+                }
+            }
+        </div>
+    </div>
+</div>

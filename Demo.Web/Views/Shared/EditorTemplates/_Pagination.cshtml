@@ -1,0 +1,40 @@
+﻿@model Demo.Model.PaginationModel
+<div id="pagination-tab" class="tab-pane fade active in">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="pagination-panel" id="hidden-table-info_info">
+                @if (Model.TotalRecords > 0)
+                {
+                    <span>Đang hiển thị <b>@(Model.PageSize * Model.PageNumber - Model.PageSize + 1)</b> - <b>@(Model.PageNumber == Model.TotalPages || !Model.ShowPaging ? Model.TotalRecords : Model.PageSize * Model.PageNumber)</b> của <b>@Model.TotalRecords.ToString("N0")</b></span>
+                }
+            </div>
+        </div>
+        @if (Model.TotalRecords > 0 && Model.ShowPaging)
+        {
+            var pageSizes = new List<int> { 20, 50, 100, 150, 200 };
+            var disabledFirst = Model.PageNumber <= 1;
+            var disabledPrevious = Model.PageNumber - 1 < 1;
+            var disabledNext = Model.PageNumber + 1 > Model.TotalPages;
+            var disabledLast = Model.PageNumber == Model.TotalPages;
+
+            <div class="col-lg-7 text-right">
+                <div class="pagination-panel" @(!string.IsNullOrEmpty(Model.PaginationId) ? "id=" + Model.PaginationId : string.Empty)>
+                    <ul class="pagination pagination-sm man">
+                        <li class="first @(disabledFirst ? "disabled" : string.Empty)"><a page="1" @Model.GetExecutePageClick(1, disabledFirst)><i class="fa fa-angle-double-left"></i></a></li>
+                        @for (int i = Model.DisplayedPageStartIndex; i <= Model.DisplayedPageEndIndex; i++)
+                        {
+                            <li @(i == Model.PageNumber ? "class=active" : string.Empty)><a page="@i" @Model.GetExecutePageClick(i, i == Model.PageNumber)>@i</a></li>
+                        }
+                        <li class="last @(disabledLast ? "disabled" : string.Empty)"><a page="@Model.TotalPages" @Model.GetExecutePageClick(Model.TotalPages, disabledLast)><i class="fa fa-angle-double-right"></i></a></li>
+                        @if (!string.IsNullOrEmpty(Model.PageSizeClickFunction))
+                        {
+                            <li>
+                                @Html.DropDownList("hidden-table-info_length", new SelectList(pageSizes, Model.PageSize), new { onchange = string.Format(Model.PageSizeClickFunction, "this") })
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>

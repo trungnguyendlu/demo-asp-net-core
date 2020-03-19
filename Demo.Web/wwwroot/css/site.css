@@ -1,0 +1,129 @@
+﻿body {
+    padding-top: 50px;
+    /*padding-bottom: 20px;*/
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+/*thumbnail same size*/
+#media-modal-content .thumbnail img {
+    max-height: 205px !important;
+    object-fit: cover;
+}
+
+.img-preview {
+    height: 70px !important;
+    width: 70px !important;
+    object-fit: cover;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#modal-content {
+    max-height: 480px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#media-modal-content {
+    max-height: 480px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+    #media-modal-content .modal-open .modal {
+        overflow-y: scroll;
+    }
+
+    #media-modal-content .thumbnail-selected {
+        background: #26A69A;
+        color: #ffffff;
+    }
+
+.maintab {
+}
+
+#media-modal-content .thumbnail {
+    height: 270px;
+    margin-bottom: 0px !important;
+    cursor: pointer !important;
+}
+
+#media-modal {
+    z-index: 1051 !important;
+}
+
+/* Loading */
+div#loadingParent {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 20001 !important;
+    text-align: center;
+    margin-left: -67.5px;
+}
+
+div#loadingChild {
+    opacity: 0.8;
+    min-width: 170px;
+    background-color: #fcfcfc;
+    padding: 15px;
+    /*border: 1px solid #FFDE9E;*/
+    /*border-top: none;*/
+    /*-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;*/
+    font-weight: bold;
+    height: 48px;
+    font-family: "Quattrocento Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	outline: 0px none;*/
+    /*-webkit-box-shadow: 7px 3px 7px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.3);
+	box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.3);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;*/
+    background-clip: padding-box;
+}
+
+img#loadingImage {
+    padding-right: 3px;
+    margin-bottom: 0px;
+}
+/* End Loading */

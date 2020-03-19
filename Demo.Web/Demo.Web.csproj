@@ -1,0 +1,587 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\Helper\Widget\**" />
+    <Compile Remove="Infrastructure\Helper\Zoom\**" />
+    <Compile Remove="Logs\**" />
+    <Compile Remove="Views\Admin\Notification\**" />
+    <Compile Remove="Views\Admin\ServiceCategory\**" />
+    <Compile Remove="Views\Admin\Theme\**" />
+    <Compile Remove="Views\Admin\Ticket\**" />
+    <Compile Remove="Views\Blog\5b7d2b2090edcf03e87f8006\**" />
+    <Compile Remove="Views\Blog\5b7d2b2090edcf03e87f8016\**" />
+    <Compile Remove="Views\Blog\5b7d2b2090edcf03e87f8017\**" />
+    <Compile Remove="Views\Gallery\**" />
+    <Compile Remove="Views\Home\5b7d2b2090edcf03e87f8006\**" />
+    <Compile Remove="Views\Home\5b7d2b2090edcf03e87f8016\**" />
+    <Compile Remove="Views\Home\5b7d2b2090edcf03e87f8017\**" />
+    <Compile Remove="wwwroot\json\**" />
+    <Compile Remove="wwwroot\themes\5a51a16437724c31141a7c71\**" />
+    <Compile Remove="wwwroot\themes\5b7bca323c870803e8804cd3\**" />
+    <Compile Remove="wwwroot\themes\5b7d2b2090edcf03e87f8006\**" />
+    <Compile Remove="wwwroot\themes\5b7d2b2090edcf03e87f8016\**" />
+    <Compile Remove="wwwroot\themes\flexweb\**" />
+    <Content Remove="Infrastructure\Helper\Widget\**" />
+    <Content Remove="Infrastructure\Helper\Zoom\**" />
+    <Content Remove="Logs\**" />
+    <Content Remove="Views\Admin\Notification\**" />
+    <Content Remove="Views\Admin\ServiceCategory\**" />
+    <Content Remove="Views\Admin\Theme\**" />
+    <Content Remove="Views\Admin\Ticket\**" />
+    <Content Remove="Views\Blog\5b7d2b2090edcf03e87f8006\**" />
+    <Content Remove="Views\Blog\5b7d2b2090edcf03e87f8016\**" />
+    <Content Remove="Views\Blog\5b7d2b2090edcf03e87f8017\**" />
+    <Content Remove="Views\Gallery\**" />
+    <Content Remove="Views\Home\5b7d2b2090edcf03e87f8006\**" />
+    <Content Remove="Views\Home\5b7d2b2090edcf03e87f8016\**" />
+    <Content Remove="Views\Home\5b7d2b2090edcf03e87f8017\**" />
+    <Content Remove="wwwroot\json\**" />
+    <Content Remove="wwwroot\themes\5a51a16437724c31141a7c71\**" />
+    <Content Remove="wwwroot\themes\5b7bca323c870803e8804cd3\**" />
+    <Content Remove="wwwroot\themes\5b7d2b2090edcf03e87f8006\**" />
+    <Content Remove="wwwroot\themes\5b7d2b2090edcf03e87f8016\**" />
+    <Content Remove="wwwroot\themes\flexweb\**" />
+    <EmbeddedResource Remove="Infrastructure\Helper\Widget\**" />
+    <EmbeddedResource Remove="Infrastructure\Helper\Zoom\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <EmbeddedResource Remove="Views\Admin\Notification\**" />
+    <EmbeddedResource Remove="Views\Admin\ServiceCategory\**" />
+    <EmbeddedResource Remove="Views\Admin\Theme\**" />
+    <EmbeddedResource Remove="Views\Admin\Ticket\**" />
+    <EmbeddedResource Remove="Views\Blog\5b7d2b2090edcf03e87f8006\**" />
+    <EmbeddedResource Remove="Views\Blog\5b7d2b2090edcf03e87f8016\**" />
+    <EmbeddedResource Remove="Views\Blog\5b7d2b2090edcf03e87f8017\**" />
+    <EmbeddedResource Remove="Views\Gallery\**" />
+    <EmbeddedResource Remove="Views\Home\5b7d2b2090edcf03e87f8006\**" />
+    <EmbeddedResource Remove="Views\Home\5b7d2b2090edcf03e87f8016\**" />
+    <EmbeddedResource Remove="Views\Home\5b7d2b2090edcf03e87f8017\**" />
+    <EmbeddedResource Remove="wwwroot\json\**" />
+    <EmbeddedResource Remove="wwwroot\themes\5a51a16437724c31141a7c71\**" />
+    <EmbeddedResource Remove="wwwroot\themes\5b7bca323c870803e8804cd3\**" />
+    <EmbeddedResource Remove="wwwroot\themes\5b7d2b2090edcf03e87f8006\**" />
+    <EmbeddedResource Remove="wwwroot\themes\5b7d2b2090edcf03e87f8016\**" />
+    <EmbeddedResource Remove="wwwroot\themes\flexweb\**" />
+    <None Remove="Infrastructure\Helper\Widget\**" />
+    <None Remove="Infrastructure\Helper\Zoom\**" />
+    <None Remove="Logs\**" />
+    <None Remove="Views\Admin\Notification\**" />
+    <None Remove="Views\Admin\ServiceCategory\**" />
+    <None Remove="Views\Admin\Theme\**" />
+    <None Remove="Views\Admin\Ticket\**" />
+    <None Remove="Views\Blog\5b7d2b2090edcf03e87f8006\**" />
+    <None Remove="Views\Blog\5b7d2b2090edcf03e87f8016\**" />
+    <None Remove="Views\Blog\5b7d2b2090edcf03e87f8017\**" />
+    <None Remove="Views\Gallery\**" />
+    <None Remove="Views\Home\5b7d2b2090edcf03e87f8006\**" />
+    <None Remove="Views\Home\5b7d2b2090edcf03e87f8016\**" />
+    <None Remove="Views\Home\5b7d2b2090edcf03e87f8017\**" />
+    <None Remove="wwwroot\json\**" />
+    <None Remove="wwwroot\themes\5a51a16437724c31141a7c71\**" />
+    <None Remove="wwwroot\themes\5b7bca323c870803e8804cd3\**" />
+    <None Remove="wwwroot\themes\5b7d2b2090edcf03e87f8006\**" />
+    <None Remove="wwwroot\themes\5b7d2b2090edcf03e87f8016\**" />
+    <None Remove="wwwroot\themes\flexweb\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AdminController.Notification.cs" />
+    <Compile Remove="Controllers\AdminController.ServiceCategory.cs" />
+    <Compile Remove="Controllers\AdminController.Theme.cs" />
+    <Compile Remove="Controllers\AdminController.Ticket.cs" />
+    <Compile Remove="Controllers\ImportController.cs" />
+    <Compile Remove="Infrastructure\Authorize\RefreshSessionAttribute.cs" />
+    <Compile Remove="Infrastructure\Utils\DataTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\Customize.cshtml" />
+    <Content Remove="Views\Admin\Notification.cshtml" />
+    <Content Remove="Views\Admin\ServiceCategory.cshtml" />
+    <Content Remove="Views\Admin\Theme.cshtml" />
+    <Content Remove="Views\Admin\ThemeSettings.cshtml" />
+    <Content Remove="Views\Admin\Ticket.cshtml" />
+    <Content Remove="Views\Admin\TicketDetail.cshtml" />
+    <Content Remove="Views\Shared\EditorTemplates\_5b7d2b2090edcf03e87f8006_FePagination.cshtml" />
+    <Content Remove="Views\Shared\EditorTemplates\_5b7d2b2090edcf03e87f8016_FePagination.cshtml" />
+    <Content Remove="Views\Shared\EditorTemplates\_5b7d2b2090edcf03e87f8017_FePagination.cshtml" />
+    <Content Remove="Views\Shared\_5b7d2b2090edcf03e87f8006_Layout.cshtml" />
+    <Content Remove="Views\Shared\_5b7d2b2090edcf03e87f8016_Layout.cshtml" />
+    <Content Remove="Views\Shared\_5b7d2b2090edcf03e87f8017_Layout.cshtml" />
+    <Content Remove="wwwroot\js\page\customize.js" />
+    <Content Remove="wwwroot\js\page\theme.js" />
+    <Content Remove="wwwroot\js\page\themesettings.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="5b7d2b2090edcf03e87f8006-1.db" />
+    <None Remove="5b7d2b2090edcf03e87f8006.db" />
+    <None Remove="main.db" />
+    <None Remove="todo.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\common.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="LigerShark.WebOptimizer.Core" Version="1.0.215" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.2.0" />
+    <PackageReference Include="Microsoft.SyndicationFeed.ReaderWriter" Version="1.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
+    <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.42" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.5.0" />
+    <PackageReference Include="WebMarkupMin.Core" Version="2.5.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Admin\Widget\_Filter.cshtml" />
+    <None Include="Views\Admin\Widget\_Result.cshtml" />
+    <None Include="Views\Shared\DisplayTemplates\_NoData.cshtml" />
+    <None Include="Views\Shared\EditorTemplates\_Pagination.cshtml" />
+    <None Include="wwwroot\icons\fontawesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\icons\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\icons\glyphicons\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\icons\glyphicons\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\icons\icomoon\fonts\icomoon.svg" />
+    <None Include="wwwroot\js\core\libraries\bootstrap.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\core.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\effects.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\full.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.af-ZA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.af.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.am-ET.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.am.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-AE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-BH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-DZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-EG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-IQ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-JO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-KW.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-LB.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-LY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-MA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-OM.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-QA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-SA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-SY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-TN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar-YE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ar.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.arn-CL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.arn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.as-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.as.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.az-Cyrl-AZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.az-Cyrl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.az-Latn-AZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.az-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.az.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ba-RU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ba.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.be-BY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.be.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bg-BG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bg.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bn-BD.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bn-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bo-CN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bo.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.br-FR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.br.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bs-Cyrl-BA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bs-Cyrl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bs-Latn-BA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bs-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.bs.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ca-ES.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ca.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.co-FR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.co.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.cs-CZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.cs.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.cy-GB.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.cy.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.da-DK.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.da.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de-AT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de-CH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de-DE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de-LI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de-LU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.dsb-DE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.dsb.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.dv-MV.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.dv.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.el-GR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.el.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-029.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-AU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-BZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-CA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-GB.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-IE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-JM.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-MY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-NZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-PH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-SG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-TT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-US.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-ZA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.en-ZW.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-AR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-BO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-CL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-CO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-CR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-DO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-EC.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-ES.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-GT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-HN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-MX.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-NI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-PA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-PE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-PR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-PY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-SV.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-US.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-UY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es-VE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.es.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.et-EE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.et.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.eu-ES.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.eu.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fa-IR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fa.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fi-FI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fi.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fil-PH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fil.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fo-FO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fo.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr-BE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr-CA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr-CH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr-FR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr-LU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr-MC.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fr.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fy-NL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.fy.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ga-IE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ga.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gd-GB.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gd.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gl-ES.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gsw-FR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gsw.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gu-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.gu.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ha-Latn-NG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ha-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ha.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.he-IL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.he.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hi-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hi.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hr-BA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hr-HR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hr.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hsb-DE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hsb.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hu-HU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hu.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hy-AM.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.hy.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.id-ID.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.id.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ig-NG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ig.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ii-CN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ii.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.is-IS.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.is.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.it-CH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.it-IT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.it.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.iu-Cans-CA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.iu-Cans.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.iu-Latn-CA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.iu-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.iu.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ja-JP.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ja.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ka-GE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ka.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kk-KZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kk.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kl-GL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.km-KH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.km.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kn-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ko-KR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ko.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kok-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.kok.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ky-KG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ky.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lb-LU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lb.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lo-LA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lo.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lt-LT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lt.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lv-LV.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.lv.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mi-NZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mi.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mk-MK.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mk.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ml-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ml.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mn-Cyrl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mn-MN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mn-Mong-CN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mn-Mong.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.moh-CA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.moh.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mr-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mr.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ms-BN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ms-MY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ms.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mt-MT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.mt.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nb-NO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nb.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ne-NP.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ne.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nl-BE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nl-NL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nn-NO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.no.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nso-ZA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.nso.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.oc-FR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.oc.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.or-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.or.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pa-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pa.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pl-PL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.prs-AF.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.prs.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ps-AF.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ps.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pt-BR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pt-PT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.pt.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.qut-GT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.qut.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.quz-BO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.quz-EC.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.quz-PE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.quz.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.rm-CH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.rm.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ro-RO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ro.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ru-RU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ru.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.rw-RW.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.rw.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sa-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sa.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sah-RU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sah.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.se-FI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.se-NO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.se-SE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.se.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.si-LK.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.si.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sk-SK.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sk.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sl-SI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sma-NO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sma-SE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sma.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.smj-NO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.smj-SE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.smj.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.smn-FI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.smn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sms-FI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sms.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sq-AL.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sq.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Cyrl-BA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Cyrl-CS.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Cyrl-ME.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Cyrl-RS.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Cyrl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Latn-BA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Latn-CS.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Latn-ME.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Latn-RS.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sr.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sv-FI.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sv-SE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sv.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sw-KE.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.sw.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.syr-SY.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.syr.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ta-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ta.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.te-IN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.te.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tg-Cyrl-TJ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tg-Cyrl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tg.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.th-TH.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.th.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tk-TM.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tk.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tn-ZA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tr-TR.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tr.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tt-RU.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tt.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tzm-Latn-DZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tzm-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.tzm.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ug-CN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ug.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uk-UA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uk.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ur-PK.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ur.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uz-Cyrl-UZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uz-Cyrl.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uz-Latn-UZ.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uz-Latn.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.uz.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.vi-VN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.vi.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.wo-SN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.wo.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.xh-ZA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.xh.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.yo-NG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.yo.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-CHS.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-CHT.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-CN.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-Hans.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-Hant.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-HK.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-MO.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-SG.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh-TW.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zh.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zu-ZA.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.zu.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\cultures\globalize.cultures.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\globalize\globalize.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\interactions.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\touch.min.js" />
+    <None Include="wwwroot\js\core\libraries\jquery_ui\widgets.min.js" />
+    <None Include="wwwroot\lib\editor\summernote\lang\summernote-vi-VN.js" />
+    <None Include="wwwroot\lib\editor\summernote\summernote.min.js" />
+    <None Include="wwwroot\lib\form\typeahead\handlebars.min.js" />
+    <None Include="wwwroot\lib\form\typeahead\typeahead.bundle.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Model\Demo.Model.csproj" />
+    <ProjectReference Include="..\Demo.BusinessLogic\Demo.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Demo.Data\Demo.Data.csproj" />
+    <ProjectReference Include="..\Demo.Entity\Demo.Entity.csproj" />
+    <ProjectReference Include="..\Demo.Repository\Demo.Repository.csproj" />
+    <ProjectReference Include="..\Demo.Util\Demo.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\glyphicons\glyphicons-halflings-regular.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\glyphicons\glyphicons-halflings-regular.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\glyphicons\glyphicons-halflings-regular.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\glyphicons\glyphicons-halflings-regular.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\glyphicons\glyphicons-halflings-regular.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\images\content\dang-ky-dung-thu-comdy-thanh-cong.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\content\dat-hang-comdy-thanh-cong.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\content\hoan-tat-don-hang.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\content\su-menh.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\content\tam-nhin.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\content\triet-ly.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

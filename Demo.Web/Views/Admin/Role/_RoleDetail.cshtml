@@ -1,0 +1,75 @@
+﻿@model Demo.Model.Admin.Role.RoleEditModel
+@{
+    var length = (int)Math.Ceiling(Model.Entity.Permissions.Count / 3.0);
+}
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formRole" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+            @Html.HiddenFor(m => m.IsEdit)
+            @Html.HiddenFor(m => m.Entity.Id)
+            <div class="row pb-20">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">@Html.LabelFor(m => m.Entity.Name)*</label>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(m => m.Entity.Name, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">@Html.LabelFor(m => m.Entity.Description)</label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Entity.Description, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="content-group">
+                <legend class="text-bold">Thông tin phân quyền</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            @for (var i = 0; i < length; i++)
+                            {
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(m => m.Entity.Permissions[i].Function)
+                                    @Html.CheckBoxFor(m => m.Entity.Permissions[i].Enable, new { view = true, @class = "styled" })
+                                    @Model.Entity.Permissions[i].Function.GetDescription()
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            @for (var i = length; i < length * 2; i++)
+                            {
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(m => m.Entity.Permissions[i].Function)
+                                    @Html.CheckBoxFor(m => m.Entity.Permissions[i].Enable, new { view = true, @class = "styled" })
+                                    @Model.Entity.Permissions[i].Function.GetDescription()
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            @for (var i = length * 2; i < Model.Entity.Permissions.Count; i++)
+                            {
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(m => m.Entity.Permissions[i].Function)
+                                    @Html.CheckBoxFor(m => m.Entity.Permissions[i].Enable, new { view = true, @class = "styled" })
+                                    @Model.Entity.Permissions[i].Function.GetDescription()
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

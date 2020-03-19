@@ -1,0 +1,44 @@
+﻿@model Demo.Model.Admin.Post.PostIndexModel
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Tiêu đề</th>
+                        <th>Chuyên mục</th>
+                        <th style="width: 90px;">Tiêu biểu</th>
+                        <th style="width: 90px;">Xuất bản</th>
+                        <th>Ngày tạo</th>
+                        <th style="width: 180px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Results)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("editpost", "admin", new { id = item.Id })" title="@item.Title">@item.Title.Truncate(70)</a>
+                            </td>
+                            <td>@item.CategoryName</td>
+                            <td class="text-center"><i class="icon-check @(item.IsFeaturePost ? "text-success" : "text-muted")"></i></td>
+                            <td class="text-center"><i class="icon-check @(item.IsPublished ? "text-success" : "text-muted")"></i></td>
+                            <td>@item.CreatedDate.ToShortDateTimeString()</td>
+                            <td style="text-align: center;">
+                                <a href="@Url.Action("copypost", "admin", new { id = item.Id })"><i class="fa fa-copy"></i>&nbsp;Copy</a>
+                                @if (SessionHelper.HasPermission(FunctionType.PostDelete))
+                                {
+                                    <a href="javascript:;" class="text-danger" onclick="comdy.post.delete('@item.Id');"><i class="fa fa-trash-o"></i>&nbsp;Xóa</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @Html.DisplayFor(a => Model.Results.Count, "_NoData")
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    @Html.PaginationFor(m => m.Paging)
+</div>

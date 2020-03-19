@@ -1,0 +1,45 @@
+﻿@model PostIndexModel
+<div class="row">
+    @if (Model.Results.Count == 0)
+    {
+        if (!string.IsNullOrEmpty(Model.RightBar.Keyword))
+        {
+            <p>Không tìm thấy kết quả nào phù hợp với từ khóa của bạn. Vui lòng tìm bằng từ khóa khác.</p>
+        }
+        else
+        {
+            <p>Nội dung đang được cập nhật.</p>
+        }
+    }
+    else
+    {
+        @foreach (var item in Model.Results)
+        {
+            <!--Single Blog Start-->
+            <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay="0ms">
+                <div class="news-item">
+                    <div class="news_box">
+                        <a class="news_box_ovrlay" href="#"></a>
+                        <div class="newsimg">
+                            <a href="@item.GetUrl()" title="@item.Title">
+                                <img class="img-responsive" src="@item.PhotoUrl" alt="@item.Title">
+                            </a>
+                        </div>
+                        <div class="news-content">
+                            <div class="news_postdate">
+                                <span><i class="fa fa-calendar"></i> @item.CreatedDate.ToShortDateTimeString()</span>
+                                <span class="ml-20"><i class="fa fa-folder-open"></i> @item.Category.Name</span>
+                            </div>
+                            <a href="@item.GetUrl()" title="@item.Title">
+                                <h3>@item.Title</h3>
+                            </a>
+                            <p class="text-justify mb-10">@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Single Blog End-->
+        }
+        @Html.FePaginationFor(a => a.Paging)
+    }
+</div>

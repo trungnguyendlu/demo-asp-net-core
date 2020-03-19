@@ -1,0 +1,56 @@
+﻿@model RightBarModel
+<div class="sidebar-widget popular-posts">
+    <div class="form-container">
+        <form method="get" action="/blog">
+            <div class="form-group">
+                <input type="search" name="q" id="q" value="" placeholder="Tìm Kiếm" required>
+                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Catagory Widget-->
+<div class="sidebar-title">
+    <h2>Chuyên Mục</h2>
+</div>
+<div class="sidebar-widget cat-widget">
+    <ul>
+        @foreach (var item in Model.Categories)
+        {
+            <li class="@(Model.CurrentCategory != null && Model.CurrentCategory.Slug == item.Slug ? "active" : "")"><a href="@item.GetUrl()" title="@item.Name">@item.Name</a></li>
+        }
+    </ul>
+</div>
+<!--Popular post Widget-->
+<div class="sidebar-widget popular-posts">
+    <div class="sidebar-title">
+        <h2>Bài Viết Tiêu Biểu</h2>
+    </div>
+    <div class="widget-content">
+        @foreach (var item in Model.Popular)
+        {
+            <article class="post">
+                <div class="post-inner">
+                    <figure class="post-thumb">
+                        <a href="@item.GetUrl()" title="@item.Title"><img src="@item.ThumbnailUrl" alt="@item.Title"></a>
+                    </figure>
+                    <div class="text"><a href="@item.GetUrl()" title="@item.Title">@item.Title.Truncate(50)</a></div>
+                    <div class="post-info">@item.CreatedDate.ToShortDateTimeString()</div>
+                </div>
+            </article>
+        }
+    </div>
+</div>
+<!--Help Widget-->
+<div class="sidebar-widget-two help-widget">
+    <div class="help-inner">
+        <div class="icon-box">
+            <img src="/themes/5b7d2b2090edcf03e87f8018/images/services/support.png" width="55" alt="Hỗ trợ">
+        </div>
+        <h3>Bạn có thắc mắc?<br />Hãy liên hệ ngay!</h3>
+        <ul>
+            <li><span class="icon fas fa-phone"></span><a class="text-white" href="tel:@Common.Settings.PhoneNumber">@Common.Settings.PhoneNumber.FormatPhoneNumber()</a></li>
+            <li><span class="icon fa fa-envelope"></span><a class="text-white" href="mailto:@Common.Settings.EmailContact">@Common.Settings.EmailContact</a></li>
+        </ul>
+    </div>
+</div>

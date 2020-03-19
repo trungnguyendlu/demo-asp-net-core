@@ -1,0 +1,14 @@
+@using Demo.Data
+@using Demo.Util
+@using Demo.Model.Post
+@using Demo.Model.Account
+@using Demo.Infrastructure.Utils
+@using Demo.Infrastructure.Helper
+@using Demo.Infrastructure.Extensions
+@using Demo.BusinessLogic
+@using Microsoft.Extensions.Options
+@addTagHelper *, WebOptimizer.Core
+@addTagHelper *, WebEssentials.AspNetCore.CdnTagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject ISessionHelper SessionHelper
+@inject IWidgetService WidgetService

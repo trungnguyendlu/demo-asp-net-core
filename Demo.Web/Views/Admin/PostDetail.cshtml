@@ -1,0 +1,164 @@
+﻿@model Demo.Model.Admin.Post.PostEditModel
+@section ExtendScripts
+    {
+    <script type="text/javascript" src="@Url.Content("/lib/editor/summernote/summernote.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/editor/summernote/lang/summernote-vi-VN.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/editor/summernote/summernote-image-title.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/form/style/switch.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/lib/form/style/switchery.min.js")"></script>
+    @Url.RenderScripts("/js/page", "postdetail.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.postdetail.init({
+                saveForm: "#formPost",
+                saveFormInput: "#formPost input",
+                id: "#Entity_Id",
+                isEdit: @(Model.IsEdit ? "true" : "false"),
+                content: "#Entity_Content",
+                title: "#Entity_Title",
+                slug: "#Entity_Slug",
+                placeholder: "@Constants.PlaceholderImageUrl",
+                saveUrl: "@Url.Action("savepost", "admin")",
+                editUrl: "@Url.Action("editpost", "admin", new { id = Model.Entity.Id })"
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="col-xs-12">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formPost" }))
+        {
+            @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+            @Html.HiddenFor(m => m.IsEdit)
+            @Html.HiddenFor(m => m.Entity.Id)
+            @Html.HiddenFor(m => m.Entity.ThumbnailUrl)
+            @Html.Hidden("Entity.Content")
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.Title)</label>
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(m => m.Entity.Title, new { @class = "form-control input-lg" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.Slug)</label>
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(m => m.Entity.Slug, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.Keyword)</label>
+                                        <div class="col-md-12">
+                                            @Html.TextAreaFor(m => m.Entity.Keyword, 2, 1, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.Description)</label>
+                                        <div class="col-md-12">
+                                            @Html.TextAreaFor(m => m.Entity.Description, 4, 1, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 col-sm-6 col-md-6 control-label">@Html.LabelFor(m => m.Entity.Content)</label>
+                                        <div class="col-md-12 col-sm-6 col-md-6">
+                                            <button type="button" class="btn btn-xs bg-teal pull-right" onclick="comdy.admin.insertImage(6)"><i class="fa fa-image fa-fw"></i>&nbsp;Chèn hình ảnh</button>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="summernote">
+                                                @Html.Raw(Model.Entity.Content)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.PhotoUrl)</label>
+                                        <div class="col-md-12">
+                                            <div class="thumbnail">
+                                                <div class="thumb">
+                                                    @Html.HiddenFor(a => Model.Entity.PhotoUrl)
+                                                    <img id="photo_url" src="@(Model.Entity.PhotoUrl ?? "/images/placeholder.png")" />
+                                                    <div class="caption-overflow">
+                                                        <span>
+                                                            <a href="javascript:;" onclick="comdy.postdetail.setPhoto($('#photo_url'))" class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5"><i class="icon-link2"></i></a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 control-label">@Html.LabelFor(m => m.Entity.CategoryId)</label>
+                                        <div class="col-md-12">
+                                            @Html.DropDownListFor(m => m.Entity.CategoryId, Model.Categories.ToSelectList(), null, new { @class = "form-control input-xs" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-5">
+                                        <div class="col-md-12">
+                                            <div class="checkbox checkbox-switchery switchery-xs">
+                                                <label>
+                                                    @Html.CheckBoxFor(a => a.Entity.IsFeaturePost, new { @class = "switchery" })
+                                                    Bài viết tiêu biểu
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="checkbox checkbox-switchery switchery-xs">
+                                                <label>
+                                                    @Html.CheckBoxFor(a => a.Entity.IsPublished, new { @class = "switchery" })
+                                                    Xuất bản
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12 text-right">
+                                            <button type="button" class="btn btn-success" onclick="comdy.postdetail.save()"><i class="fa fa-save fa-fw"></i>&nbsp;Lưu</button>
+                                            <a href="@Url.Action("post", "admin")" class="btn btn-warning"><i class="fa fa-remove"></i> Thoát</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@await Html.PartialAsync("Inc/_MediaModal")

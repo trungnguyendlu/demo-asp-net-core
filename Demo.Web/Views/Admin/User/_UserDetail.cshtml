@@ -1,0 +1,58 @@
+﻿@model Demo.Model.Admin.User.UserEditModel
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formUser" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(string.Empty, new { @class = "note note-danger" })
+            @Html.HiddenFor(m => m.IsEdit)
+            @Html.HiddenFor(m => m.Entity.Id)
+            @Html.HiddenFor(m => m.Entity.AvatarUrl)
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Email)*</label>
+                        <div class="col-xs-8">
+                            @Html.TextBoxFor(m => m.Entity.Email, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                @if (!Model.IsEdit)
+                {
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Password)*</label>
+                            <div class="col-xs-8">
+                                @Html.TextBoxFor(m => m.Entity.Password, new { @class = "form-control input-xs" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.FullName)*</label>
+                        <div class="col-xs-8">
+                            @Html.TextBoxFor(m => m.Entity.FullName, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.RoleId)*</label>
+                        <div class="col-xs-8">
+                            @Html.DropDownListFor(m => m.Entity.RoleId, Model.Roles.ToSelectList(), null, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">@Html.LabelFor(m => m.Entity.Status)*</label>
+                        <div class="col-xs-8">
+                            @Html.EnumDropDownFor(m => m.Entity.Status, null, null, new { @class = "form-control input-xs" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

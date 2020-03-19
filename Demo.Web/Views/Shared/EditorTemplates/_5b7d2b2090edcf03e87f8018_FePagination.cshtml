@@ -1,0 +1,30 @@
+﻿@model Demo.Model.PaginationModel
+@if (Model.TotalRecords > 0 && Model.ShowPaging)
+{
+    var disabledFirst = Model.PageNumber <= 1;
+    var disabledPrevious = Model.PageNumber - 1 < 1;
+    var disabledNext = Model.PageNumber + 1 > Model.TotalPages;
+    var disabledLast = Model.PageNumber == Model.TotalPages;
+<ul class="pagination">
+    <li class="page-item @(disabledFirst ? "disabled" : string.Empty)"><a class="page-link" href="/san-pham"><i class="fas fa-angle-left"></i></a></li>
+    @if (Model.DisplayedPageStartIndex > 1)
+    {
+        if (Model.DisplayedPageStartIndex > 2)
+        {
+            <li class="page-item"><a class="page-link" href="@Model.PageClickUrl@(Model.DisplayedPageStartIndex - 1)">...</a></li>
+        }
+    }
+    @for (int i = Model.DisplayedPageStartIndex; i <= Model.DisplayedPageEndIndex; i++)
+    {
+        <li class="page-item @(i == Model.PageNumber ? "active" : "")" ><a class="page-link" href="@Model.PageClickUrl@i">@i</a></li>       
+    }
+    @if (Model.DisplayedPageEndIndex < Model.TotalPages)
+    {
+        if (Model.DisplayedPageEndIndex < Model.TotalPages - 1)
+        {
+            <li class="page-item"><a class="page-link" href="@Model.PageClickUrl@(Model.DisplayedPageEndIndex + 1)">...</a></li>
+        }
+    }
+    <li class="page-item @(disabledLast ? "disabled" : string.Empty)"><a class="page-link" href="@Model.PageClickUrl@Model.TotalPages"><i class="fas fa-angle-right"></i></a></li>
+</ul>
+}

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Admin\Notification\**" />
+    <Compile Remove="Admin\ServiceCategory\**" />
+    <Compile Remove="Admin\Theme\**" />
+    <Compile Remove="Admin\Ticket\**" />
+    <EmbeddedResource Remove="Admin\Notification\**" />
+    <EmbeddedResource Remove="Admin\ServiceCategory\**" />
+    <EmbeddedResource Remove="Admin\Theme\**" />
+    <EmbeddedResource Remove="Admin\Ticket\**" />
+    <None Remove="Admin\Notification\**" />
+    <None Remove="Admin\ServiceCategory\**" />
+    <None Remove="Admin\Theme\**" />
+    <None Remove="Admin\Ticket\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Data\Demo.Data.csproj" />
+    <ProjectReference Include="..\Demo.Util\Demo.Util.csproj" />
+  </ItemGroup>
+
+</Project>

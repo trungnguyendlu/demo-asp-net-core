@@ -1,0 +1,36 @@
+﻿@model Demo.Model.Admin.Category.CategoryIndexModel
+@section ExtendScripts
+    {
+    @Url.RenderScripts("/js/page", "category.js")
+    <script type="text/javascript">
+        $(function () {
+            comdy.category.init({
+                saveForm: "#formCategory",
+                saveFormInput: "#formCategory input",
+                pageSize: "#Paging_PageSize",
+                pageNumber: "#Paging_PageNumber",
+                searchForm: "#formSearchCategory",
+                searchFormInput: "#formSearchCategory input",
+                resultContent: "#results",
+                name: "#Entity_Name",
+                slug: "#Entity_Slug",
+                searchUrl: "@Url.Action("category", "admin")",
+                createUrl: "@Url.Action("createcategory", "admin")",
+                editUrl: "@Url.Action("editcategory", "admin")",
+                copyUrl: "@Url.Action("copycategory", "admin")",
+                saveUrl: "@Url.Action("savecategory", "admin")",
+                deleteUrl: "@Url.Action("deletecategory", "admin")"
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h5>Quản Lý Danh Mục</h5>
+        <hr />
+        @await Html.PartialAsync("Category/_CategoryFilter")
+    </div>
+    <div id="results">
+        @await Html.PartialAsync("Category/_CategoryResult")
+    </div>
+</div>

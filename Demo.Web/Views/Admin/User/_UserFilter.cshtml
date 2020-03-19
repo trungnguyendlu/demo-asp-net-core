@@ -1,0 +1,41 @@
+﻿@model Demo.Model.Admin.User.UserIndexModel
+@using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", id = "formSearchUser" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Sort)
+    @Html.HiddenFor(m => m.Paging.PageSize)
+    @Html.HiddenFor(m => m.Paging.PageNumber)
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.RoleId, Model.Roles.ToSelectList(), "--Phân Quyền--", new { @class = "form-control input-xs" })
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-xs", placeholder = "Email" })
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <button onclick="comdy.user.search()" type="button" class="btn btn-block btn-xs btn-info"><i class="fa fa-search"></i>&nbsp;Tìm Kiếm</button>
+                </div>
+            </div>
+        </div>
+        @if (SessionHelper.HasPermission(FunctionType.UserCreate))
+        {
+            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <a href="javascript:;" onclick="comdy.user.create()" class="btn btn-block btn-xs btn-success"><i class="fa fa-plus"></i>&nbsp;Thêm Mới</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

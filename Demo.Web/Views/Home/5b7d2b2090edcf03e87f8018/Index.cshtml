@@ -1,0 +1,126 @@
+﻿@inject IBlogService BlogService
+@{
+    var featurePosts = await BlogService.GetFeaturePostsAsync(6);
+    var widgets = await WidgetService.GetWidgetsAsync();
+}
+@section HeaderIncludes {
+    @if (!string.IsNullOrEmpty(Common.Settings.Keywords))
+    {
+        <meta name="keywords" content="@Common.Settings.Keywords">
+    }
+    @if (!string.IsNullOrEmpty(Common.Settings.Description))
+    {
+        <meta name="description" content="@Common.Settings.Description">
+        <meta property="og:description" content="@Common.Settings.Description">
+    }
+}
+@section Styles{
+    <link href="/lib/notification/pnotify.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="/lib/notification/pnotify.min.js" type="text/javascript"></script>
+    <script src="/js/page/fe.corporation.js" type="text/javascript"></script>
+}
+@section RichSnippets {
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "Organization",
+        "url": "@ViewBag.Host",
+        "logo": "@ViewBag.Host@Common.Settings.IconUrl",
+        "contactPoint": [
+        {
+        "@@type": "ContactPoint",
+        "telephone": "@Common.Settings.PhoneNumber.FormatPhoneNumber()",
+        "contactType": "customer support"
+        }]
+        }
+    </script>
+}
+
+<!--Main Slider-->
+<section class="main-slider">
+    <div class="mainslider owl-carousel owl-theme">
+        
+    </div>
+</section>
+<!--End Main Slider-->
+<!--What We Do Start-->
+@if (widgets.Exists(a => a.Position == WidgetPosition.Top))
+{
+    @Html.Raw(widgets.FirstOrDefault(a => a.Position == WidgetPosition.Top).Content)
+}
+<!--What We Do End-->
+<!--paralex background-->
+@if (widgets.Exists(a => a.Position == WidgetPosition.Middle))
+{
+    @Html.Raw(widgets.FirstOrDefault(a => a.Position == WidgetPosition.Middle).Content)
+}
+<!--paralex background End-->
+<!--News Section Start-->
+@if (featurePosts.Count > 0)
+{
+    <div class="news-section section">
+        <div class="container">
+            <div class="main-title-box text-center">
+                <h2 class="big-title">Tin Tức Mới Nhất</h2>
+            </div>
+            <div class="row news-slide owl-carousel owl-theme">
+                @foreach (var item in featurePosts)
+                {
+                    <!--Single News Start-->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <a class="news_box_ovrlay" href="#"></a>
+                                <div class="newsimg ratio-4-3">
+                                    <a href="@item.GetUrl()" title="@item.Title">
+                                        <img class="img-responsive" src="@item.ThumbnailUrl" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="news-content">
+                                    <div class="news_postdate">
+                                        <span><i class="fa fa-calendar"></i> @item.CreatedDate.ToShortDateTimeString()</span>
+                                    </div>
+                                    <a href="@item.GetUrl()" title="@item.Title">
+                                        <h3>@item.Title.Truncate(50)</h3>
+                                    </a>
+                                    <p class="text-justify mb-0">@item.Description.Truncate(100)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Single News End-->
+                }
+            </div>
+        </div>
+    </div>
+}
+<!--News Section End-->
+<!-- Modal -->
+<div class="modal1 mfp-hide" id="modal-quote">
+    <div class="block divcenter" style="background-color: #FFF; max-width: 400px;">
+        <div style="padding: 30px 30px 10px;">
+            <h3 class="mb-20">Yêu Cầu Tư Vấn</h3>
+            <form id="qoute-form" class="contact-form" method="post" action="/lien-he" novalidate="novalidate">
+                <input type="hidden" id="Content" name="Content" value="Yêu cầu tư vấn thêm về dịch vụ" />
+                <div class="row clearfix">
+                    <div class="col-lg-12 form-group">
+                        <input type="text" id="FullName" name="FullName" placeholder="Họ Tên *" required="" />
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <input type="tel" id="PhoneNumber" name="PhoneNumber" placeholder="Điện Thoại *" required="" />
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <input type="email" id="Email" name="Email" placeholder="Email *" required="" />
+                    </div>
+                    <div class="col-lg-12 form-group mb-0">
+                        <button class="theme-button" type="submit" id="submit_btn" onclick="comdy.app.order()"><i class="fa fa-paper-plane"></i> Gửi Yêu Cầu</button>
+                        <div id="loading" style="display:none"><img src="/themes/5b7d2b2090edcf03e87f8018/images/loading.gif" alt="loading"></div>
+                        <div class="contact-form-message"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
